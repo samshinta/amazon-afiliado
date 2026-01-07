@@ -1,8 +1,12 @@
 import { GoogleGenAI } from "@google/genai";
 
 export const handler = async (event: any) => {
+  // Apenas aceita requisições POST
   if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+    return { 
+      statusCode: 405, 
+      body: JSON.stringify({ error: "Método não permitido" }) 
+    };
   }
 
   try {
@@ -12,19 +16,20 @@ export const handler = async (event: any) => {
     if (!apiKey) {
       return {
         statusCode: 500,
-        body: JSON.stringify({ error: "API_KEY não encontrada nas variáveis de ambiente do Netlify." }),
+        body: JSON.stringify({ error: "A variável de ambiente API_KEY não foi configurada no Netlify." }),
       };
     }
 
+    // Inicializa o SDK conforme as diretrizes mais recentes
     const ai = new GoogleGenAI({ apiKey });
 
-    // Usando gemini-3-pro-preview para raciocínio complexo sobre literatura
+    // Gera o conteúdo usando o modelo mais avançado para raciocínio literário
     const response = await ai.models.generateContent({
       model: "gemini-3-pro-preview",
-      contents: prompt,
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
       config: {
         thinkingConfig: { thinkingBudget: 32768 },
-        systemInstruction: "Você é um bibliotecário erudito e amigável do MelhoresPreços.shop. Recomende livros com base na alma do pedido do usuário. Cite autores brasileiros. Seja poético mas direto. Sempre mencione que os livros podem ser encontrados na Amazon através do nosso site.",
+        systemInstruction: "Você é um bibliotecário especialista do site MelhoresPreços.shop. Sua missão é fornecer recomendações de livros profundas, poéticas e precisas em Português do Brasil. Sempre sugira autores brasileiros quando o tema permitir e lembre o usuário que os links da Amazon estão disponíveis no site para compra segura.",
       },
     });
 
@@ -33,6 +38,7 @@ export const handler = async (event: any) => {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type",
       },
       body: JSON.stringify({ text: response.text }),
     };
@@ -40,7 +46,7 @@ export const handler = async (event: any) => {
     console.error("Erro na Function Gemini:", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: error.message || "Erro interno na comunicação com a IA." }),
+      body: JSON.stringify({ error: error.message || "Erro interno ao processar a solicitação de IA." }),
     };
   }
 };
