@@ -12,8 +12,22 @@ const generateMockBooks = (): Book[] => {
       img: 'https://i.imgur.com/BTmFOnM.jpg'
     },
     { t: 'Hábitos Atômicos', a: 'James Clear', c: 'Autoajuda', link: 'https://amzn.to/4pjcy4a',  img: 'https://i.imgur.com/yDAQkM4.jpg', p: 45.00 },
-    { t: 'O Homem Mais Rico da Babilônia', a: 'George S. Clason', c: 'Finanças', p: 22.90 },
-    { t: 'Pai Rico, Pai Pobre', a: 'Robert Kiyosaki', c: 'Finanças', p: 49.90 },
+    { 
+      t: 'O Homem Mais Rico da Babilônia', 
+      a: 'George S. Clason', 
+      c: 'Finanças', 
+      p: 22.90,
+      link: 'https://amzn.to/45J5syS',
+      img: 'https://i.imgur.com/SwVSeru.jpg'
+    },
+    { 
+      t: 'Pai Rico, Pai Pobre', 
+      a: 'Robert Kiyosaki', 
+      c: 'Finanças', 
+      p: 49.90,
+      link: 'https://amzn.to/3LoLp1V',
+      img: 'https://i.imgur.com/T3FNoKa.jpg'
+    },
     { t: 'Os Segredos da Mente Milionária', a: 'T. Harv Eker', c: 'Finanças', p: 32.50 },
     { t: 'Mais Esperto que o Diabo', a: 'Napoleon Hill', c: 'Autoajuda', p: 29.90 },
     { t: 'A Sutil Arte de Ligar o F*da-se', a: 'Mark Manson', c: 'Autoajuda', p: 38.00 },
@@ -89,7 +103,7 @@ export const MOCK_BLOG: BlogPost[] = [
       A ficção científica é frequentemente vista como entretenimento sobre naves espaciais e tecnologia futurista. No entanto, sua função vai muito além da diversão: ela atua como um laboratório mental que expande a nossa capacidade de pensar fora da caixa.
 
       ### Flexibilidade Cognitiva
-      Ler sobre mundos que operam sob regras físicas ou sociais radicalmente diferentes das nossas exige um esforço cerebral único. O cérebro precisa constantemente atualizar seus modelos mentais para acompanhar a narrativa. Esse exercício fortalece a **flexibilidade cognitiva**, a habilidade de alternar entre diferentes conceitos ou pensar sobre múltiplos conceitos simultaneamente.
+      Ler sobre mundos que operam sob regras físicas ou sociais radicalmente diferentes das nossas exige um esforço cerebral único. O cérebro precisa constantemente atualizar seus modelos mentais para acompanhar a narrativa. Esse exercício fortaleolce a **flexibilidade cognitiva**, a habilidade de alternar entre diferentes conceitos ou pensar sobre múltiplos conceitos simultaneamente.
 
       ### Simulação Social e Teoria da Mente
       Diferente de outros gêneros, a ficção científica nos coloca em contato com o "verdadeiramente outro" — sejam alienígenas, inteligências artificiais ou sociedades distópicas. Isso treina a nossa empatia de uma forma específica.
@@ -269,7 +283,7 @@ export const MOCK_AUTHORS: Author[] = [
   {
     id: 'a6',
     name: "Sarah J. Maas",
-    bio: "Rainha da fantasia romântica moderna, criadora de mundos épicos e personagens inesquecíveis.",
+    bio: "Rainha da fantasia romântica moderna, criadora de mundos épicos e characters inesquecíveis.",
     imageUrl: "https://picsum.photos/seed/sjm/400/400",
     category: "Fantasia / Romantasia",
     topBooks: ["Corte de Espinhos e Rosas", "Trono de Vidro", "Cidade da Lua Crescente"],
