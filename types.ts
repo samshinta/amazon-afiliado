@@ -37,5 +37,21 @@ export interface Author {
   name: string;
   bio: string;
   imageUrl: string;
-  famousBooks: string[];
+  category: string;
+  topBooks: string[];
+  hobby: string;
+  country: string;
+  maritalStatus: string;
+  children: string;
+}
+
+export interface Sebo {
+  id: string;
+  name: string;
+  city: string;
+  state: string;
+  address: string;
+  phone: string;
+  instagram: string;
+  coordinates?: { lat: number; lng: number };
 }
