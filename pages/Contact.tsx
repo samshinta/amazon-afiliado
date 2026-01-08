@@ -8,7 +8,7 @@ const Contact: React.FC = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 serif">Atendimento ao Leitor</h1>
           <p className="text-lg text-slate-500 max-w-lg mx-auto italic">
-            Dúvidas sobre pedidos (Amazon), sugestões de conteúdo ou parcerias.
+            Sugestões de conteúdo ou parcerias.
           </p>
         </div>
 
