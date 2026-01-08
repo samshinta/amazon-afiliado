@@ -1,7 +1,5 @@
 {
   "name": "MelhoresPreços - Afiliados de Livros",
-  "description": "Plataforma de afiliados para os livros mais vendidos da Amazon com assistente de IA para recomendações literárias profundas.",
-  "requestFramePermissions": [
-    "microphone"
-  ]
+  "description": "Plataforma de afiliados para os livros mais vendidos da Amazon com curadoria especializada e recomendações literárias profundas.",
+  "requestFramePermissions": []
 }

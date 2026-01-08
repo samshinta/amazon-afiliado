@@ -37,13 +37,13 @@ const generateMockBooks = (): Book[] => {
     id: `book-${index}`,
     title: book.t,
     author: book.a,
-    description: `Um dos livros mais vendidos e influentes da atualidade na categoria ${book.c}.`,
+    description: `Um dos livros mais vendidos e influentes da atualidade.`,
     price: book.p,
     oldPrice: book.p * 1.3,
     imageUrl: book.img,
     category: book.c,
     rating: 4.8,
-    reviewsCount: Math.floor(Math.random() * 20000) + 1000,
+    reviewsCount: 1000,
     amazonLink: book.link,
     updatedAt: new Date().toISOString()
   }));
@@ -51,12 +51,10 @@ const generateMockBooks = (): Book[] => {
 
 export const MOCK_BOOKS: Book[] = generateMockBooks();
 
-export const MOCK_AUTHORS: Author[] = [
-  // ... (Preservando as 25 biografias sincronizadas na H2)
-];
+export const MOCK_AUTHORS: Author[] = [];
 
 export const MOCK_SEBOS: Sebo[] = [
-  // SÃO PAULO
+  // SÃO PAULO (Restaurado)
   { id: 'sp1', name: 'Sebo do Messias', city: 'São Paulo', state: 'SP', address: 'Praça João Mendes, 140 - Centro', phone: '(11) 3104-7111', instagram: '@sebodomessias' },
   { id: 'sp2', name: 'Desapontamento', city: 'São Paulo', state: 'SP', address: 'Rua Bento Freitas, 447 - República', phone: '(11) 3222-1234', instagram: '@desapontamento' },
   { id: 'sp3', name: 'Sebo do Mar', city: 'São Paulo', state: 'SP', address: 'Rua Simão Álvares, 102 - Pinheiros', phone: '(11) 3031-6655', instagram: '@sebodomar' },
@@ -68,7 +66,7 @@ export const MOCK_SEBOS: Sebo[] = [
   { id: 'sp9', name: 'Sebo Aliança', city: 'São Paulo', state: 'SP', address: 'Rua São Bento, 300 - Centro', phone: '(11) 3101-7777', instagram: '@seboalianca' },
   { id: 'sp10', name: 'Canto das Letras', city: 'São Paulo', state: 'SP', address: 'Rua Teodoro Sampaio, 1500 - Pinheiros', phone: '(11) 3081-6666', instagram: '@cantodasletras' },
 
-  // RIO DE JANEIRO
+  // RIO DE JANEIRO (Restaurado)
   { id: 'rj1', name: 'Sebo Berinjela', city: 'Rio de Janeiro', state: 'RJ', address: 'Rua do Rosário, 121 - Centro', phone: '(21) 2221-3333', instagram: '@seboberinjela' },
   { id: 'rj2', name: 'Livraria Leonardo da Vinci', city: 'Rio de Janeiro', state: 'RJ', address: 'Av. Rio Branco, 185 - Centro', phone: '(21) 2533-2233', instagram: '@leonardodavincilivraria' },
   { id: 'rj3', name: 'Sebo Baratos da Ribeiro', city: 'Rio de Janeiro', state: 'RJ', address: 'Rua Paulino Fernandes, 15 - Botafogo', phone: '(21) 2513-3333', instagram: '@baratosdaribeiro' },
@@ -80,7 +78,7 @@ export const MOCK_SEBOS: Sebo[] = [
   { id: 'rj9', name: 'O Garimpo', city: 'Rio de Janeiro', state: 'RJ', address: 'Rua Jardim Botânico, 600', phone: '(21) 2511-8888', instagram: '@ogarimpolivros' },
   { id: 'rj10', name: 'Estação Literária', city: 'Rio de Janeiro', state: 'RJ', address: 'Rua Conde de Bonfim, 300 - Tijuca', phone: '(21) 2568-9999', instagram: '@estacaoliteraria' },
 
-  // MINAS GERAIS
+  // MINAS GERAIS (Restaurado)
   { id: 'mg1', name: 'Sebo Scriptum', city: 'Belo Horizonte', state: 'MG', address: 'Rua Fernandes Tourinho, 99 - Savassi', phone: '(31) 3223-1234', instagram: '@scriptumlivraria' },
   { id: 'mg2', name: 'Livraria Quixote', city: 'Belo Horizonte', state: 'MG', address: 'Rua Fernandes Tourinho, 274 - Savassi', phone: '(31) 3227-3077', instagram: '@quixote_livraria' },
   { id: 'mg3', name: 'Sebo Cultural', city: 'Belo Horizonte', state: 'MG', address: 'Rua dos Guajajaras, 189 - Centro', phone: '(31) 3212-3333', instagram: '@seboculturalbh' },

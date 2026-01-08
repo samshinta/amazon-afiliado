@@ -29,6 +29,15 @@
 </head>
 <body class="bg-stone-50 text-slate-900">
     <div id="root"></div>
+
+    <!-- Formulário oculto exigido pelo Netlify para detecção de campos em SPAs -->
+    <form name="contato-melhoresprecos" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="subject" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+      <input type="text" name="consent" />
+    </form>
+
     <script type="module" src="./bundle.js"></script>
 </body>
 </html>

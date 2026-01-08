@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 interface ContactFormProps {
@@ -13,6 +12,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ title, description, theme = '
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
   const [isSent, setIsSent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const validateEmail = (email: string) => {
@@ -23,7 +23,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ title, description, theme = '
       );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const encode = (data: { [key: string]: string }) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
@@ -37,30 +43,43 @@ const ContactForm: React.FC<ContactFormProps> = ({ title, description, theme = '
       return;
     }
 
-    // Simulação de envio para samshinta@gmail.com
-    console.log("Enviando formulário para samshinta@gmail.com", {
-      sender: consent === 'yes' ? email : 'Anônimo (Sem consentimento)',
-      subject,
-      message,
-      consent
-    });
+    setLoading(true);
 
-    setIsSent(true);
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "contato-melhoresprecos",
+          "email": consent === 'yes' ? email : 'Anônimo',
+          "subject": subject,
+          "message": message,
+          "consent": consent || 'no'
+        })
+      });
+      setIsSent(true);
+    } catch (err) {
+      setError('Ocorreu um erro ao enviar. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (isSent) {
     return (
-      <div className={`p-8 text-center rounded-3xl border-2 border-dashed ${theme === 'dark' ? 'border-indigo-500/30' : 'border-indigo-200'}`}>
-        <i className="fa-solid fa-paper-plane text-4xl text-indigo-500 mb-4"></i>
+      <div className={`p-8 text-center rounded-3xl border-2 border-dashed animate-fade-in ${theme === 'dark' ? 'border-indigo-500/30' : 'border-indigo-200'}`}>
+        <div className="w-16 h-16 bg-indigo-600/10 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i className="fa-solid fa-check text-2xl text-indigo-500"></i>
+        </div>
         <h3 className={`text-2xl font-bold mb-2 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>Mensagem enviada!</h3>
         <p className={`${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>
           {consent === 'yes' 
-            ? "Obrigado por entrar em contato. Responderemos em breve no seu e-mail." 
-            : "Sua mensagem foi enviada. Como você optou por não autorizar o armazenamento do e-mail, não haverá retorno desta solicitação."}
+            ? "Obrigado! Responderemos em breve no seu e-mail." 
+            : "Sua mensagem foi enviada anonimamente. Obrigado pelo feedback!"}
         </p>
         <button 
           onClick={() => { setIsSent(false); setConsent(null); setEmail(''); setSubject(''); setMessage(''); }}
-          className="mt-6 text-indigo-500 font-bold hover:underline"
+          className="mt-6 text-indigo-500 font-bold hover:underline transition-all"
         >
           Enviar outra mensagem
         </button>
@@ -69,18 +88,17 @@ const ContactForm: React.FC<ContactFormProps> = ({ title, description, theme = '
   }
 
   return (
-    <div className={`rounded-3xl shadow-sm overflow-hidden ${theme === 'dark' ? 'bg-slate-800/50 border border-slate-700' : 'bg-white border border-stone-200'}`}>
+    <div className={`rounded-3xl shadow-sm overflow-hidden transition-all ${theme === 'dark' ? 'bg-slate-800/50 border border-slate-700' : 'bg-white border border-stone-200'}`}>
       <div className="p-6 md:p-8">
         <h2 className={`text-2xl font-bold mb-2 serif ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>{title}</h2>
         <p className={`mb-8 ${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}`}>{description}</p>
 
-        {/* Box de Permissão */}
-        <div className={`mb-8 p-4 rounded-xl border-l-4 ${theme === 'dark' ? 'bg-slate-900/50 border-indigo-500' : 'bg-indigo-50 border-indigo-600'}`}>
+        <div className={`mb-8 p-4 rounded-xl border-l-4 transition-all ${theme === 'dark' ? 'bg-slate-900/50 border-indigo-500' : 'bg-indigo-50 border-indigo-600'}`}>
           <div className="flex gap-3 items-start">
             <i className={`fa-solid fa-shield-halved mt-1 ${theme === 'dark' ? 'text-indigo-400' : 'text-indigo-600'}`}></i>
             <div>
               <p className={`text-sm font-medium mb-4 ${theme === 'dark' ? 'text-slate-300' : 'text-slate-800'}`}>
-                Aviso de Privacidade: Solicitamos permissão para armazenar seu e-mail exclusivamente para que possamos responder sua mensagem.
+                Aviso de Privacidade: Solicitamos permissão para armazenar seu e-mail apenas para resposta.
               </p>
               <div className="flex gap-4">
                 <button 
@@ -89,7 +107,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ title, description, theme = '
                   className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
                     consent === 'yes' 
                       ? 'bg-indigo-600 text-white shadow-lg' 
-                      : (theme === 'dark' ? 'bg-slate-800 text-slate-400' : 'bg-white text-slate-600 border border-slate-200')
+                      : (theme === 'dark' ? 'bg-slate-800 text-slate-400 hover:bg-slate-700' : 'bg-white text-slate-600 border border-slate-200 hover:bg-stone-50')
                   }`}
                 >
                   Concordo
@@ -100,7 +118,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ title, description, theme = '
                   className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
                     consent === 'no' 
                       ? 'bg-red-600 text-white shadow-lg' 
-                      : (theme === 'dark' ? 'bg-slate-800 text-slate-400' : 'bg-white text-slate-600 border border-slate-200')
+                      : (theme === 'dark' ? 'bg-slate-800 text-slate-400 hover:bg-slate-700' : 'bg-white text-slate-600 border border-slate-200 hover:bg-stone-50')
                   }`}
                 >
                   Não concordo
@@ -111,20 +129,28 @@ const ContactForm: React.FC<ContactFormProps> = ({ title, description, theme = '
         </div>
 
         {consent !== null && (
-          <form onSubmit={handleSubmit} className="space-y-4 animate-fade-in">
+          <form 
+            onSubmit={handleSubmit} 
+            className="space-y-4 animate-fade-in"
+            data-netlify="true"
+            name="contato-melhoresprecos"
+          >
+            <input type="hidden" name="form-name" value="contato-melhoresprecos" />
+            
             {consent === 'no' && (
               <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-xs flex items-center gap-2">
                 <i className="fa-solid fa-triangle-exclamation"></i>
-                Você optou por não autorizar o armazenamento do e-mail. Não teremos como te dar um retorno desta mensagem.
+                Modo Anônimo: Não teremos como retornar esta mensagem.
               </div>
             )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-1">
                 <label className={`text-xs font-bold uppercase tracking-wider ${theme === 'dark' ? 'text-slate-500' : 'text-slate-400'}`}>
-                  Seu E-mail {consent === 'no' && '(Opcional/Oculto)'}
+                  Seu E-mail {consent === 'no' && '(Oculto)'}
                 </label>
                 <input 
+                  name="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -142,10 +168,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ title, description, theme = '
                   Assunto
                 </label>
                 <input 
+                  name="subject"
                   type="text"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  placeholder="Sugestão de sebo, dúvida..."
+                  placeholder="Sugestão, dúvida..."
                   className={`w-full px-4 py-3 rounded-xl outline-none focus:ring-2 transition-all ${
                     theme === 'dark' 
                       ? 'bg-slate-900 border-none text-white focus:ring-indigo-500' 
@@ -161,10 +188,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ title, description, theme = '
                 Sua Mensagem
               </label>
               <textarea 
+                name="message"
                 rows={4}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Escreva aqui os detalhes..."
+                placeholder="Escreva sua mensagem..."
                 className={`w-full px-4 py-3 rounded-xl outline-none focus:ring-2 transition-all resize-none ${
                   theme === 'dark' 
                     ? 'bg-slate-900 border-none text-white focus:ring-indigo-500' 
@@ -178,9 +206,10 @@ const ContactForm: React.FC<ContactFormProps> = ({ title, description, theme = '
 
             <button 
               type="submit"
-              className="w-full bg-indigo-600 text-white py-4 rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg flex items-center justify-center gap-2"
+              disabled={loading}
+              className={`w-full bg-indigo-600 text-white py-4 rounded-xl font-bold hover:bg-indigo-700 transition-all shadow-lg flex items-center justify-center gap-2 ${loading ? 'opacity-70 cursor-wait' : ''}`}
             >
-              Enviar Mensagem <i className="fa-solid fa-paper-plane text-xs"></i>
+              {loading ? 'Enviando...' : 'Enviar Mensagem'} <i className={`fa-solid ${loading ? 'fa-spinner fa-spin' : 'fa-paper-plane'} text-xs`}></i>
             </button>
           </form>
         )}

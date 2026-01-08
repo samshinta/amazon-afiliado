@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import AIAssistant from './components/AIAssistant';
 import Home from './pages/Home';
 import Sebos from './pages/Sebos';
 import Books from './pages/Books';
@@ -77,8 +75,6 @@ const App: React.FC = () => {
             </div>
           </div>
         </footer>
-
-        <AIAssistant />
       </div>
     </Router>
   );

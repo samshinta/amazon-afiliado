@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { MOCK_SEBOS } from '../constants';
 import { Sebo } from '../types';
@@ -114,7 +113,7 @@ const Sebos: React.FC = () => {
           </div>
         )}
 
-        {/* Novo Formulário de Indicação de Sebo */}
+        {/* Formulário de Indicação de Sebo */}
         <section className="bg-slate-900 rounded-[3rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
           <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-500/10 rounded-full -ml-48 -mt-48 blur-3xl"></div>
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -133,7 +132,7 @@ const Sebos: React.FC = () => {
             <ContactForm 
               theme="dark"
               title="Indicar novo Sebo"
-              description="Sua sugestão será analisada por nossa IA e incluída na próxima sincronização."
+              description="Sua sugestão será analisada por nossa equipe e incluída na próxima atualização da lista."
             />
           </div>
         </section>
