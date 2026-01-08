@@ -2,99 +2,49 @@ import { Book, BlogPost, Quote, Author, Sebo } from './types';
 
 const generateMockBooks = (): Book[] => {
   const titles = [
-    { 
-      t: 'A Biblioteca da Meia-Noite', 
-      a: 'Matt Haig', 
-      c: 'Ficção', 
-      p: 34.90, 
-      link: 'https://amzn.to/3Yo4Vi1',
-      img: 'https://i.imgur.com/BTmFOnM.jpg'
-    },
-    { t: 'Hábitos Atômicos', a: 'James Clear', c: 'Autoajuda', link: 'https://amzn.to/4pjcy4a',  img: 'https://i.imgur.com/yDAQkM4.jpg', p: 45.00 },
-    { 
-      t: 'O Homem Mais Rico da Babilônia', 
-      a: 'George S. Clason', 
-      c: 'Finanças', 
-      p: 22.90,
-      link: 'https://amzn.to/45J5syS',
-      img: 'https://i.imgur.com/SwVSeru.jpg'
-    },
-    { 
-      t: 'Pai Rico, Pai Pobre', 
-      a: 'Robert Kiyosaki', 
-      c: 'Finanças', 
-      p: 49.90,
-      link: 'https://amzn.to/3LoLp1V',
-      img: 'https://imgur.com/SGsNa1o.jpg'
-    },
-    { 
-      t: 'Os Segredos da Mente Milionária', 
-      a: 'T. Harv Eker', 
-      c: 'Finanças', 
-      p: 32.50, 
-      link: 'https://amzn.to/4pw6sh1',
-      img: 'https://i.imgur.com/FATyYfN.jpg' 
-    },
-
-    { t: 'Mais Esperto que o Diabo', a: 'Napoleon Hill', c: 'Autoajuda', p: 29.90, link: 'https://amzn.to/3NazBB2https://amzn.to/3NazBB2', img: 'https://i.imgur.com/4csvkhS.jpg'  },
-    { t: 'A Sutil Arte de Ligar o F*da-se', a: 'Mark Manson', c: 'Autoajuda', p: 38.00 },
-    { t: 'Mulheres que Correm com os Lobos', a: 'Clarissa Pinkola Estés', c: 'Psicologia', p: 54.90 },
-    { t: '1984', a: 'George Orwell', c: 'Clássicos', p: 25.00 },
-    { t: 'A Revolução dos Bichos', a: 'George Orwell', c: 'Clássicos', p: 18.90 },
-    { t: 'O Pequeno Príncipe', a: 'Antoine de Saint-Exupéry', c: 'Infantil', p: 15.00 },
-    { t: 'Torto Arado', a: 'Itamar Vieira Junior', c: 'Lit. Brasileira', p: 44.90 },
-    { t: 'Tudo Sobre o Amor', a: 'bell hooks', c: 'Sociologia', p: 39.90 },
-    { t: 'É Assim que Acaba', a: 'Colleen Hoover', c: 'Romance', p: 36.50 },
-    { t: 'É Assim que Começa', a: 'Colleen Hoover', c: 'Romance', p: 38.90 },
-    { t: 'Verity', a: 'Colleen Hoover', c: 'Suspense', p: 35.00 },
-    { t: 'O Lado Feio do Amor', a: 'Colleen Hoover', c: 'Romance', p: 32.00 },
-    { t: 'Mentirosos', a: 'E. Lockhart', c: 'Suspense', p: 28.00 },
-    { t: 'Daisy Jones and The Six', a: 'Taylor Jenkins Reid', c: 'Ficção', p: 34.90 },
-    { t: 'Os Sete Maridos de Evelyn Hugo', a: 'Taylor Jenkins Reid', c: 'Ficção', p: 39.00 },
-    { t: 'Heartstopper: Dois Garotos, Um Encontro', a: 'Alice Oseman', c: 'HQ', p: 42.00 },
-    { t: 'Corte de Espinhos e Rosas', a: 'Sarah J. Maas', c: 'Fantasia', p: 48.00 },
-    { t: 'O Príncipe Cruel', a: 'Holly Black', c: 'Fantasia', p: 35.90 },
-    { t: 'Quarta Asa', a: 'Rebecca Yarros', c: 'Fantasia', p: 59.90 },
-    { t: 'Biblioteca de Almas', a: 'Ransom Riggs', c: 'Fantasia', p: 33.00 },
-    { t: 'Café com Deus Pai', a: 'Junior Rostirola', c: 'Religião', p: 65.00 },
-    { t: 'O Poder da Autorresponsabilidade', a: 'Paulo Vieira', c: 'Autoajuda', p: 19.90 },
-    { t: 'Ansiedade: Como enfrentar o mal do século', a: 'Augusto Cury', c: 'Psicologia', p: 24.90 },
-    { t: 'Mindset', a: 'Carol Dweck', c: 'Psicologia', p: 41.00 },
-    { t: 'Rápido e Devagar', a: 'Daniel Kahneman', c: 'Psicologia', p: 52.00 },
-    { t: 'Sapiens: Uma Breve História da Humanidade', a: 'Yuval Noah Harari', c: 'História', p: 58.00 },
-    { t: 'Homo Deus', a: 'Yuval Noah Harari', c: 'História', p: 54.00 },
-    { t: '21 Lições para o Século 21', a: 'Yuval Noah Harari', c: 'Sociologia', p: 49.00 },
-    { t: 'Meditações', a: 'Marco Aurélio', c: 'Filosofia', p: 22.00 },
-    { t: 'Assim Falou Zaratustra', a: 'Friedrich Nietzsche', c: 'Filosofia', p: 30.00 },
-    { t: 'Admirável Mundo Novo', a: 'Aldous Huxley', c: 'Clássicos', p: 33.00 },
-    { t: 'Fahrenheit 451', a: 'Ray Bradbury', c: 'Clássicos', p: 31.00 },
-    { t: 'O Senhor dos Anéis: A Sociedade do Anel', a: 'J.R.R. Tolkien', c: 'Fantasia', p: 55.00 },
-    { t: 'O Hobbit', a: 'J.R.R. Tolkien', c: 'Fantasia', p: 38.00 },
-    { t: 'Harry Potter e a Pedra Filosofal', a: 'J.K. Rowling', c: 'Fantasia', p: 39.90 },
-    { t: 'O Silmarillion', a: 'J.R.R. Tolkien', c: 'Fantasia', p: 45.00 },
-    { t: 'Duna', a: 'Frank Herbert', c: 'Sci-Fi', p: 52.00 },
-    { t: 'Neuromancer', a: 'William Gibson', c: 'Sci-Fi', p: 39.00 },
-    { t: 'Fundação', a: 'Isaac Asimov', c: 'Sci-Fi', p: 44.00 },
-    { t: 'Eu, Robô', a: 'Isaac Asimov', c: 'Sci-Fi', p: 38.00 },
-    { t: 'A Menina que Roubava Livros', a: 'Markus Zusak', c: 'Ficção', p: 35.00 },
-    { t: 'O Caçador de Pipas', a: 'Khaled Hosseini', c: 'Ficção', p: 36.00 },
-    { t: 'Cem Anos de Solidão', a: 'Gabriel García Márquez', c: 'Clássicos', p: 48.00 },
-    { t: 'Grande Sertão: Veredas', a: 'Guimarães Rosa', c: 'Lit. Brasileira', p: 65.00 },
-    { t: 'Dom Casmurro', a: 'Machado de Assis', c: 'Lit. Brasileira', p: 19.00 },
+    { t: 'Café com Deus Pai Vol. 6 - 2026', a: 'Júnior Rostirola', c: 'Religião', p: 69.90, link: 'https://amzn.to/49ccQDM', img: 'https://i.imgur.com/mh1bIQ4.jpg' },
+    { t: 'A psicologia financeira: lições atemporais sobre fortuna, ganância e felicidade', a: 'Morgan Housel', c: 'Finanças', p: 41.90, link: 'https://amzn.to/45uVilk', img: 'https://i.imgur.com/bC7VV6q.jpg' },
+    { t: 'Coisa de rico: A vida dos endinheirados brasileiros', a: 'Michel Alcoforado', c: 'Finanças', p: 35.00, link: 'https://amzn.to/3Yc8M1w', img: 'https://i.imgur.com/01tRp7d.jpg' },
+    { t: 'A hora da estrela: Edição comemorativa', a: 'Clarice Lispector', c: 'Lit. Brasileira', p: 29.90, link: 'https://amzn.to/4qsowt4', img: 'https://i.imgur.com/BYFx8R7.jpg' },
+    { t: 'A empregada (A empregada – Livro 1): Bem-vinda à família', a: 'Freida McFadden', c: 'Suspense', p: 39.90, link: 'https://amzn.to/44MrbFV', img: 'https://i.imgur.com/2PMtHUV.jpg' },
+    { t: 'Hábitos Atômicos', a: 'James Clear', c: 'Autoajuda', p: 45.00, link: 'https://amzn.to/4pjcy4a', img: 'https://i.imgur.com/yDAQkM4.jpg' },
+    { t: 'O homem mais rico da Babilonia', a: 'George S. Clason', c: 'Finanças', p: 22.90, link: 'https://amzn.to/45J5syS', img: 'https://i.imgur.com/SwVSeru.jpg' },
+    { t: 'pai rico pai pobre', a: 'Robert Kiyosaki', c: 'Finanças', p: 49.90, link: 'https://amzn.to/3LoLp1V', img: 'https://imgur.com/SGsNa1o.jpg' },
+    { t: 'os segredos da mente milionaria', a: 'T. Harv Eker', c: 'Finanças', p: 32.50, link: 'https://amzn.to/4pw6sh1', img: 'https://i.imgur.com/FATyYfN.jpg' },
+    { t: 'mais esperto que o diabo', a: 'Napoleon Hill', c: 'Autoajuda', p: 29.90, link: 'https://amzn.to/3NazBB2', img: 'https://i.imgur.com/4csvkhS.jpg' },
+    { t: 'a sutil arte de ligar o foda se', a: 'Mark Manson', c: 'Autoajuda', p: 38.00, link: 'https://amzn.to/450EBy2', img: 'https://i.imgur.com/XXRlgDQ.jpg' },
+    { t: 'mulheres que correm com os lobos', a: 'Clarissa Pinkola Estés', c: 'Psicologia', p: 54.90, link: 'https://amzn.to/49o9DkH', img: 'https://i.imgur.com/AxlerOH.jpg' },
+    { t: '1984', a: 'George Orwell', c: 'Clássicos', p: 25.00, link: 'https://amzn.to/3N8jhkc', img: 'https://i.imgur.com/YckUbHk.jpg' },
+    { t: 'a revolução dos bichos', a: 'George Orwell', c: 'Clássicos', p: 18.90, link: 'https://amzn.to/4srM8Ad', img: 'https://i.imgur.com/BgKF1Eb.jpg' },
+    { t: 'o pequeno principe', a: 'Antoine de Saint-Exupéry', c: 'Infantil', p: 15.00, link: 'https://amzn.to/3L97v8C', img: 'https://i.imgur.com/Y7Xv4j6.jpg' },
+    { t: 'torto arado', a: 'Itamar Vieira Junior', c: 'Lit. Brasileira', p: 44.90, link: 'https://amzn.to/4jt0oEw', img: 'https://i.imgur.com/GOLtrsG.jpg' },
+    { t: 'tudo sobre o amor', a: 'bell hooks', c: 'Sociologia', p: 39.90, link: 'https://amzn.to/45KDMts', img: 'https://i.imgur.com/zwNUsJC.jpg' },
+    { t: 'é assim que acaba', a: 'Colleen Hoover', c: 'Romance', p: 36.50, link: 'https://amzn.to/4swZISE', img: 'https://i.imgur.com/EiLl1kB.jpg' },
+    { t: 'é assim que começa', a: 'Colleen Hoover', c: 'Romance', p: 38.90, link: 'https://amzn.to/4jtMBxH', img: 'https://i.imgur.com/UJwPIDK.jpg' },
+    { t: 'verity', a: 'Colleen Hoover', c: 'Suspense', p: 35.00, link: 'https://amzn.to/49tNJMW', img: 'https://i.imgur.com/Ab0TPxZ.jpg' },
+    { t: 'o lado feio do amor', a: 'Colleen Hoover', c: 'Romance', p: 32.00, link: 'https://amzn.to/4snhzeK', img: 'https://i.imgur.com/7PmsKSw.jpg' },
+    { t: 'mentirosos', a: 'E. Lockhart', c: 'Suspense', p: 28.00, link: 'https://amzn.to/3Z4jiIo', img: 'https://i.imgur.com/9GtYRbw.jpg' },
+    { t: 'daisy jones and the six', a: 'Taylor Jenkins Reid', c: 'Ficção', p: 34.90, link: 'https://amzn.to/3Ngw6J5', img: 'https://i.imgur.com/Y1M8Lsr.jpg' },
+    { t: 'os sete maridos de evelyn hugo', a: 'Taylor Jenkins Reid', c: 'Ficção', p: 39.00, link: 'https://amzn.to/4pxERfr', img: 'https://i.imgur.com/DotPTey.jpg' },
+    { t: 'heartstopper', a: 'Alice Oseman', c: 'HQ', p: 42.00, link: 'https://amzn.to/49PU8m7', img: 'https://i.imgur.com/aoiF2qX.jpg' },
+    { t: 'corte de espinhos e rosas', a: 'Sarah J. Maas', c: 'Fantasia', p: 48.00, link: 'https://amzn.to/4q6efDe', img: 'https://i.imgur.com/Il3M9Ag.jpg' },
+    { t: 'o principe cruel', a: 'Holly Black', c: 'Fantasia', p: 35.90, link: 'https://amzn.to/3NmdvLL', img: 'https://i.imgur.com/7MNyQ5l.jpg' },
+    { t: 'quarta asa', a: 'Rebecca Yarros', c: 'Fantasia', p: 59.90, link: 'https://amzn.to/4jzuJBs', img: 'https://i.imgur.com/j5DvwoV.jpg' },
+    { t: 'biblioteca de almas', a: 'Ransom Riggs', c: 'Fantasia', p: 33.00, link: 'https://amzn.to/3LvK21g', img: 'https://i.imgur.com/Wa6rKNd.jpg' },
   ];
 
   return titles.map((book, index) => ({
-    id: String(index + 1),
+    id: `book-${index}`,
     title: book.t,
     author: book.a,
     description: `Um dos livros mais vendidos e influentes da atualidade na categoria ${book.c}.`,
     price: book.p,
     oldPrice: book.p * 1.3,
-    imageUrl: (book as any).img || `https://picsum.photos/seed/${index + 100}/400/600`,
+    imageUrl: book.img,
     category: book.c,
-    rating: 4.5 + Math.random() * 0.5,
+    rating: 4.8,
     reviewsCount: Math.floor(Math.random() * 20000) + 1000,
-    amazonLink: (book as any).link || 'https://www.amazon.com.br/gp/bestsellers/books/',
+    amazonLink: book.link,
     updatedAt: new Date().toISOString()
   }));
 };
@@ -105,7 +55,7 @@ export const MOCK_BLOG: BlogPost[] = [
   {
     id: '1',
     title: 'Por que ler ficção científica aumenta a criatividade?',
-    excerpt: 'Descubra como mundos imaginários podem expandir seus horizons cognitivos.',
+    excerpt: 'Descubra como mundos imaginários podem expandir seus horizontes cognitivos.',
     content: `
       A ficção científica é frequentemente vista como entretenimento sobre naves espaciais e tecnologia futurista. No entanto, sua função vai muito além da diversão: ela atua como um laboratório mental que expande a nossa capacidade de pensar fora da caixa.
 
@@ -118,13 +68,13 @@ export const MOCK_BLOG: BlogPost[] = [
       > "A função da ficção é a abstração e simulação da experiência social." 
       > — **Raymond Mar & Keith Oatley (2008)**, York University.
 
-      O estudo de Mar e Oatley sugere que a leitura de ficção treina a **Teoria da Mente**, permitindo-nos compreender melhor as intenções e emoções alheias ao simular interações sociais complexas. Na ficção científica, essa simulação é levada ao limite, forçando o leitor a encontrar humanidade em contextos inumanos.
+      O estudo de Mar e Oatley sugere que a leitura de ficção treina a **Teoria da Mente**, permitindo-nos compreender melhor as intenções e emoções alheias ao simular interações sociais complexas.
 
       ### O Poder do "E se?"
-      O núcleo da ficção científica é o questionamento hipotético. "E se pudéssemos viajar no tempo?", "E se a morte fosse opcional?". Ao confrontar essas perguntas, o leitor desenvolve um pensamento crítico mais aguçado e uma visão menos rígida da realidade. Para profissionais de inovação e tecnologia, essa capacidade de visualizar cenários futuros é uma ferramenta de trabalho essencial.
+      O núcleo da ficção científica é o questionamento hipotético. Ao confrontar essas perguntas, o leitor desenvolve um pensamento crítico mais aguçado e uma visão menos rígida da realidade.
 
       ### Conclusão
-      Se você busca expandir seus horizontes criativos, mergulhar em uma obra de Isaac Asimov ou Frank Herbert pode ser tão eficaz quanto um curso de brainstorming. Você não está apenas lendo uma história; você está treinando sua mente para o desconhecido.
+      Se você busca expandir seus horizontes criativos, mergulhar em uma obra de Isaac Asimov ou Frank Herbert pode ser tão eficaz quanto um curso de brainstorming.
     `,
     author: 'Ana Silva',
     date: '2024-05-20',
@@ -134,219 +84,49 @@ export const MOCK_BLOG: BlogPost[] = [
 ];
 
 export const MOCK_QUOTES: Quote[] = [
-  {
-    id: 'q1',
-    text: "Não é preciso ser brilhante para ser próspero, basta ter um plano e segui-lo.",
-    author: "Robert Kiyosaki",
-    book: "Pai Rico, Pai Pobre"
-  },
-  {
-    id: 'q2',
-    text: "Você não atinge o nível de seus objetivos. Você cai para o nível de seus sistemas.",
-    author: "James Clear",
-    book: "Hábitos Atômicos"
-  },
-  {
-    id: 'q3',
-    text: "Entre o passado e o futuro, existe um lugar chamado agora, e é lá que a vida acontece.",
-    author: "Matt Haig",
-    book: "A Biblioteca da Meia-Noite"
-  },
-  {
-    id: 'q4',
-    text: "Liberdade é a liberdade de dizer que dois mais dois são quatro. Se isso for concedido, tudo mais virá em seguida.",
-    author: "George Orwell",
-    book: "1984"
-  },
-  {
-    id: 'q5',
-    text: "O essencial é invisível aos olhos.",
-    author: "Antoine de Saint-Exupéry",
-    book: "O Pequeno Príncipe"
-  },
-  {
-    id: 'q6',
-    text: "É preciso muito esforço para que as coisas pareçam fáceis.",
-    author: "Taylor Jenkins Reid",
-    book: "Daisy Jones and The Six"
-  },
-  {
-    id: 'q7',
-    text: "Às vezes, a pessoa que te ama é a que mais te machuca.",
-    author: "Colleen Hoover",
-    book: "É Assim que Acaba"
-  },
-  {
-    id: 'q8',
-    text: "Nem todos os que vagam estão perdidos.",
-    author: "J.R.R. Tolkien",
-    book: "O Senhor dos Anéis"
-  },
-  {
-    id: 'q9',
-    text: "São as nossas escolhas que revelam o que realmente somos, muito mais do que as nossas capacidades.",
-    author: "J.K. Rowling",
-    book: "Harry Potter e a Pedra Filosofal"
-  },
-  {
-    id: 'q10',
-    text: "O medo é o assassino da mente.",
-    author: "Frank Herbert",
-    book: "Duna"
-  },
-  {
-    id: 'q11',
-    text: "A vida não é o que a gente viveu, e sim o que a gente recorda, e como recorda para contá-la.",
-    author: "Gabriel García Márquez",
-    book: "Cem Anos de Solidão"
-  },
-  {
-    id: 'q12',
-    text: "Viver é muito perigoso; e não é não. Nem sabe a gente. Só quando se morre é que se sabe que se viveu.",
-    author: "Guimarães Rosa",
-    book: "Grande Sertão: Veredas"
-  },
-  {
-    id: 'q13',
-    text: "Amo a liberdade, por isso deixo livre tudo que amo. Se voltar, é porque conquistei. Se não voltar, é porque nunca possuí.",
-    author: "Machado de Assis",
-    book: "Dom Casmurro"
-  },
-  {
-    id: 'q14',
-    text: "O amor não é algo que você sente, é algo que você faz.",
-    author: "bell hooks",
-    book: "Tudo Sobre o Amor"
-  },
-  {
-    id: 'q15',
-    text: "Nossa história é escrita pelos nossos pés, pelo caminho que escolhemos trilhar.",
-    author: "Itamar Vieira Junior",
-    book: "Torto Arado"
-  }
+  { id: 'q1', text: "Não é preciso ser brilhante para ser próspero, basta ter um plano e segui-lo.", author: "Robert Kiyosaki", book: "Pai Rico, Pai Pobre" },
+  { id: 'q2', text: "Você não atinge o nível de seus objetivos. Você cai para o nível de seus sistemas.", author: "James Clear", book: "Hábitos Atômicos" },
+  { id: 'q3', text: "Entre o passado e o futuro, existe um lugar chamado agora, e é lá que a vida acontece.", author: "Matt Haig", book: "A Biblioteca da Meia-Noite" },
+  { id: 'q4', text: "Liberdade é a liberdade de dizer que dois mais dois são quatro. Se isso for concedido, tudo mais virá em seguida.", author: "George Orwell", book: "1984" },
+  { id: 'q5', text: "O essencial é invisível aos olhos.", author: "Antoine de Saint-Exupéry", book: "O Pequeno Príncipe" },
+  { id: 'q6', text: "É preciso muito esforço para que as coisas pareçam fáceis.", author: "Taylor Jenkins Reid", book: "Daisy Jones and The Six" },
+  { id: 'q7', text: "Às vezes, a pessoa que te ama é a que mais te machuca.", author: "Colleen Hoover", book: "É Assim que Acaba" },
+  { id: 'q8', text: "Nem todos os que vagam estão perdidos.", author: "J.R.R. Tolkien", book: "O Senhor dos Anéis" },
+  { id: 'q9', text: "São as nossas escolhas que revelam o que realmente somos, muito mais do que as nossas capacidades.", author: "J.K. Rowling", book: "Harry Potter e a Pedra Filosofal" },
+  { id: 'q10', text: "O medo é o assassino da mente.", author: "Frank Herbert", book: "Duna" },
+  { id: 'q11', text: "A vida não é o que a gente viveu, e sim o que a gente recorda, e como recorda para contá-la.", author: "Gabriel García Márquez", book: "Cem Anos de Solidão" },
+  { id: 'q12', text: "Viver é muito perigoso; e não é não. Nem sabe a gente. Só quando se morre é que se sabe que se viveu.", author: "Guimarães Rosa", book: "Grande Sertão: Veredas" },
+  { id: 'q13', text: "Amo a liberdade, por isso deixo livre tudo que amo. Se voltar, é porque conquistei. Se não voltar, é porque nunca possuí.", author: "Machado de Assis", book: "Dom Casmurro" },
+  { id: 'q14', text: "O amor não é algo que você sente, é algo que você faz.", author: "bell hooks", book: "Tudo Sobre o Amor" },
+  { id: 'q15', text: "Nossa história é escrita pelos nossos pés, pelo caminho que escolhemos trilhar.", author: "Itamar Vieira Junior", book: "Torto Arado" }
 ];
 
 export const MOCK_AUTHORS: Author[] = [
-  {
-    id: 'a1',
-    name: "Matt Haig",
-    bio: "Escritor britânico conhecido por suas obras de ficção e não-ficção que abordam saúde mental com sensibilidade.",
-    imageUrl: "https://picsum.photos/seed/matthaig/400/400",
-    category: "Ficção / Saúde Mental",
-    topBooks: ["A Biblioteca da Meia-Noite", "Razões para Continuar Vivo", "O Livro do Conforto"],
-    hobby: "Correr e caminhar pela natureza",
-    country: "Reino Unido",
-    maritalStatus: "Casado",
-    children: "2 filhos"
-  },
-  {
-    id: 'a2',
-    name: "James Clear",
-    bio: "Especialista em formação de hábitos e melhoria contínua, criador do best-seller 'Hábitos Atômicos'.",
-    imageUrl: "https://picsum.photos/seed/jamesclear/400/400",
-    category: "Autoajuda / Produtividade",
-    topBooks: ["Hábitos Atômicos", "The Clear Habit Journal"],
-    hobby: "Levantamento de peso e fotografia",
-    country: "Estados Unidos",
-    maritalStatus: "Casado",
-    children: "Sem filhos"
-  },
-  {
-    id: 'a3',
-    name: "Colleen Hoover",
-    bio: "Fenômeno do TikTok e autora número 1 do New York Times, famosa por seus romances emocionantes.",
-    imageUrl: "https://picsum.photos/seed/hoover/400/400",
-    category: "Romance / New Adult",
-    topBooks: ["É Assim que Acaba", "Verity", "É Assim que Começa"],
-    hobby: "Leitura e filantropia",
-    country: "Estados Unidos",
-    maritalStatus: "Casada",
-    children: "3 filhos"
-  },
-  {
-    id: 'a4',
-    name: "Robert Kiyosaki",
-    bio: "Empresário e autor de finanças pessoais mais vendido de todos os tempos, criador da série 'Pai Rico'.",
-    imageUrl: "https://picsum.photos/seed/robertk/400/400",
-    category: "Finanças / Educação Financeira",
-    topBooks: ["Pai Rico, Pai Pobre", "Independência Financeira", "O Quadrante de Fluxo de Caixa"],
-    hobby: "Investir e Jogar Golfe",
-    country: "Estados Unidos",
-    maritalStatus: "Casado",
-    children: "Sem filhos"
-  },
-  {
-    id: 'a5',
-    name: "Taylor Jenkins Reid",
-    bio: "Autora aclamada por criar biografias fictícias de ícones culturais que parecem reais.",
-    imageUrl: "https://picsum.photos/seed/tjr/400/400",
-    category: "Ficção Contemporânea",
-    topBooks: ["Os Sete Maridos de Evelyn Hugo", "Daisy Jones and The Six", "Malibu Renasce"],
-    hobby: "Escrever roteiros e viajar",
-    country: "Estados Unidos",
-    maritalStatus: "Casada",
-    children: "1 filha"
-  },
-  {
-    id: 'a6',
-    name: "Sarah J. Maas",
-    bio: "Rainha da fantasia romântica moderna, criadora de mundos épicos e characters inesquecíveis.",
-    imageUrl: "https://picsum.photos/seed/sjm/400/400",
-    category: "Fantasia / Romantasia",
-    topBooks: ["Corte de Espinhos e Rosas", "Trono de Vidro", "Cidade da Lua Crescente"],
-    hobby: "Ouvir música e criar histórias",
-    country: "Estados Unidos",
-    maritalStatus: "Casada",
-    children: "2 filhos"
-  },
-  {
-    id: 'a7',
-    name: "George Orwell",
-    bio: "Voz profética da literatura clássica, cujas obras sobre totalitarismo permanecem cruciais hoje.",
-    imageUrl: "https://picsum.photos/seed/orwell/400/400",
-    category: "Clássicos / Distopia",
-    topBooks: ["1984", "A Revolução dos Bichos", "Lutando na Espanha"],
-    hobby: "Jardinagem e criação de animais",
-    country: "Reino Unido",
-    maritalStatus: "Viúvo (na época do falecimento)",
-    children: "1 filho (adotivo)"
-  },
-  {
-    id: 'a8',
-    name: "Itamar Vieira Junior",
-    bio: "Escritor baiano e geógrafo, vencedor do Prêmio Jabuti e um dos maiores nomes da literatura brasileira atual.",
-    imageUrl: "https://picsum.photos/seed/itamar/400/400",
-    category: "Literatura Brasileira",
-    topBooks: ["Torto Arado", "Doramar ou a Odisseia", "Salvar o Fogo"],
-    hobby: "Pesquisa antropológica",
-    country: "Brasil",
-    maritalStatus: "Privado",
-    children: "Sim"
-  },
-  {
-    id: 'a9',
-    name: "Yuval Noah Harari",
-    bio: "Historiador e professor israelense, autor de obras que analisam o passado e o futuro da humanidade.",
-    imageUrl: "https://picsum.photos/seed/harari/400/400",
-    category: "História / Sociologia",
-    topBooks: ["Sapiens", "Homo Deus", "21 Lições para o Século 21"],
-    hobby: "Meditação Vipassana",
-    country: "Israel",
-    maritalStatus: "Casado",
-    children: "Sem filhos"
-  },
-  {
-    id: 'a10',
-    name: "Mark Manson",
-    bio: "Autor e blogueiro que desafia a positividade tóxica com uma abordagem realista da felicidade.",
-    imageUrl: "https://picsum.photos/seed/manson/400/400",
-    category: "Autoajuda / Filosofia",
-    topBooks: ["A Sutil Arte de Ligar o F*da-se", "F*deu-se", "Everything is F*cked"],
-    hobby: "Música e viagens pelo mundo",
-    country: "Estados Unidos",
-    maritalStatus: "Casado",
-    children: "Sem filhos"
-  }
+  { id: 'a1', name: "Júnior Rostirola", bio: "Pastor e autor do best-seller 'Café com Deus Pai', Rostirola foca em devocionais diários que trazem paz e reflexão.", imageUrl: "https://i.imgur.com/mh1bIQ4.jpg", category: "Religião", topBooks: ["Café com Deus Pai Vol. 6 - 2026"], hobby: "Teologia", country: "Brasil", maritalStatus: "Casado", children: "2 filhos" },
+  { id: 'a2', name: "Morgan Housel", bio: "Morgan Housel é sócio do Collaborative Fund e ex-colunista do Wall Street Journal. É um dos maiores especialistas em finanças comportamentais.", imageUrl: "https://i.imgur.com/bC7VV6q.jpg", category: "Finanças", topBooks: ["A psicologia financeira"], hobby: "Escrita Econômica", country: "Estados Unidos", maritalStatus: "Casado", children: "2 filhos" },
+  { id: 'a3', name: "Michel Alcoforado", bio: "Antropólogo e consultor, Michel Alcoforado estuda o comportamento de consumo e a vida das elites brasileiras.", imageUrl: "https://i.imgur.com/01tRp7d.jpg", category: "Sociologia / Finanças", topBooks: ["Coisa de rico"], hobby: "Antropologia", country: "Brasil", maritalStatus: "Solteiro", children: "Sem filhos" },
+  { id: 'a4', name: "Clarice Lispector", bio: "Uma das figuras mais importantes da literatura brasileira do século XX, conhecida por seu estilo introspectivo e inovador.", imageUrl: "https://i.imgur.com/BYFx8R7.jpg", category: "Literatura Brasileira", topBooks: ["A hora da estrela"], hobby: "Pintura", country: "Brasil", maritalStatus: "Divorciada", children: "2 filhos" },
+  { id: 'a5', name: "Freida McFadden", bio: "Médica especializada em reabilitação cerebral e autora de suspenses psicológicos que dominam as listas da Amazon.", imageUrl: "https://i.imgur.com/2PMtHUV.jpg", category: "Suspense", topBooks: ["A empregada"], hobby: "Medicina", country: "Estados Unidos", maritalStatus: "Casada", children: "Sim" },
+  { id: 'a6', name: "James Clear", bio: "Especialista em formação de hábitos e autor da obra-prima 'Hábitos Atômicos', que ajudou milhões a melhorar suas rotinas.", imageUrl: "https://i.imgur.com/yDAQkM4.jpg", category: "Autoajuda", topBooks: ["Hábitos Atômicos"], hobby: "Fotografia", country: "Estados Unidos", maritalStatus: "Casado", children: "Sem filhos" },
+  { id: 'a7', name: "George S. Clason", bio: "Famoso por suas parábolas ambientadas na antiga Babilônia, ensinando princípios atemporais de gestão financeira.", imageUrl: "https://i.imgur.com/SwVSeru.jpg", category: "Finanças", topBooks: ["O homem mais rico da Babilonia"], hobby: "História", country: "Estados Unidos", maritalStatus: "Casado", children: "Sim" },
+  { id: 'a8', name: "Robert Kiyosaki", bio: "Autor de 'Pai Rico, Pai Pobre', um dos livros de finanças pessoais mais vendidos de todos os tempos.", imageUrl: "https://imgur.com/SGsNa1o.jpg", category: "Finanças", topBooks: ["pai rico pai pobre"], hobby: "Investimentos", country: "Estados Unidos", maritalStatus: "Casado", children: "Sem filhos" },
+  { id: 'a9', name: "T. Harv Eker", bio: "Especialista em mindset de riqueza, autor do clássico 'Os Segredos da Mente Milionária'.", imageUrl: "https://i.imgur.com/FATyYfN.jpg", category: "Finanças", topBooks: ["os segredos da mente milionaria"], hobby: "Palestras", country: "Canadá", maritalStatus: "Casado", children: "Sim" },
+  { id: 'a10', name: "Napoleon Hill", bio: "Pioneiro no gênero de desenvolvimento pessoal, estudou as mentes mais ricas de sua época.", imageUrl: "https://i.imgur.com/4csvkhS.jpg", category: "Autoajuda", topBooks: ["mais esperto que o diabo"], hobby: "Jornalismo", country: "Estados Unidos", maritalStatus: "Casado", children: "Sim" },
+  { id: 'a11', name: "Mark Manson", bio: "Autor e blogueiro que traz uma abordagem pragmática e realista para a felicidade e o sucesso.", imageUrl: "https://i.imgur.com/XXRlgDQ.jpg", category: "Autoajuda", topBooks: ["a sutil arte de ligar o foda se"], hobby: "Viagens", country: "Estados Unidos", maritalStatus: "Casado", children: "Sem filhos" },
+  { id: 'a12', name: "Clarissa Pinkola Estés", bio: "Analista junguiana e poetisa, autora do transformador 'Mulheres que Correm com os Lobos'.", imageUrl: "https://i.imgur.com/AxlerOH.jpg", category: "Psicologia", topBooks: ["mulheres que correm com os lobos"], hobby: "Canto", country: "Estados Unidos", maritalStatus: "Casada", children: "3 filhos" },
+  { id: 'a13', name: "George Orwell", bio: "Escritor e jornalista britânico, cujas obras '1984' e 'A Revolução dos Bichos' são marcos da crítica social.", imageUrl: "https://i.imgur.com/YckUbHk.jpg", category: "Clássicos", topBooks: ["1984", "a revolução dos bichos"], hobby: "Jardinagem", country: "Reino Unido", maritalStatus: "Viúvo", children: "1 filho" },
+  { id: 'a14', name: "Antoine de Saint-Exupéry", bio: "Aviador francês e escritor, imortalizado pela doçura e sabedoria de 'O Pequeno Príncipe'.", imageUrl: "https://i.imgur.com/Y7Xv4j6.jpg", category: "Infantil", topBooks: ["o pequeno principe"], hobby: "Aviação", country: "França", maritalStatus: "Casado", children: "Sem filhos" },
+  { id: 'a15', name: "Itamar Vieira Junior", bio: "Geógrafo e escritor brasileiro, autor do aclamado 'Torto Arado', um marco da literatura contemporânea.", imageUrl: "https://i.imgur.com/GOLtrsG.jpg", category: "Literatura Brasileira", topBooks: ["torto arado"], hobby: "Geografia", country: "Brasil", maritalStatus: "Privado", children: "Sim" },
+  { id: 'a16', name: "bell hooks", bio: "Teórica feminista e ativista, suas obras sobre amor e justiça social são fundamentais para o pensamento moderno.", imageUrl: "https://i.imgur.com/zwNUsJC.jpg", category: "Sociologia", topBooks: ["tudo sobre o amor"], hobby: "Educação", country: "Estados Unidos", maritalStatus: "Solteira", children: "Sem filhos" },
+  { id: 'a17', name: "Colleen Hoover", bio: "Fenômeno global da literatura contemporânea, conhecida por seus romances emocionantes e personagens reais.", imageUrl: "https://i.imgur.com/EiLl1kB.jpg", category: "Romance", topBooks: ["é assim que acaba", "é assim que começa", "verity", "o lado feio do amor"], hobby: "TikTok", country: "Estados Unidos", maritalStatus: "Casada", children: "3 filhos" },
+  { id: 'a18', name: "E. Lockhart", bio: "Pseudônimo de Emily Jenkins, autora de suspenses intensos e premiados como 'Mentirosos'.", imageUrl: "https://i.imgur.com/9GtYRbw.jpg", category: "Suspense", topBooks: ["mentirosos"], hobby: "Escrita", country: "Estados Unidos", maritalStatus: "Casada", children: "Sim" },
+  { id: 'a19', name: "Taylor Jenkins Reid", bio: "Autora aclamada por criar biografias fictícias de ícones que parecem existir na vida real.", imageUrl: "https://i.imgur.com/Y1M8Lsr.jpg", category: "Ficção", topBooks: ["daisy jones and the six", "os sete maridos de evelyn hugo"], hobby: "Séries", country: "Estados Unidos", maritalStatus: "Casada", children: "1 filha" },
+  { id: 'a20', name: "Alice Oseman", bio: "Autora e ilustradora britânica, criadora da amada série de quadrinhos 'Heartstopper'.", imageUrl: "https://i.imgur.com/aoiF2qX.jpg", category: "HQ / Romance", topBooks: ["heartstopper"], hobby: "Desenho", country: "Reino Unido", maritalStatus: "Solteira", children: "Sem filhos" },
+  { id: 'a21', name: "Sarah J. Maas", bio: "Rainha da fantasia moderna, Maas criou universos épicos em 'Corte de Espinhos e Rosas'.", imageUrl: "https://i.imgur.com/Il3M9Ag.jpg", category: "Fantasia", topBooks: ["corte de espinhos e rosas"], hobby: "Música", country: "Estados Unidos", maritalStatus: "Casada", children: "2 filhos" },
+  { id: 'a22', name: "Holly Black", bio: "Mestre da fantasia feérica, autora da trilogia 'O Povo do Air', que inclui 'O Príncipe Cruel'.", imageUrl: "https://i.imgur.com/7MNyQ5l.jpg", category: "Fantasia", topBooks: ["o principe cruel"], hobby: "Coleções", country: "Estados Unidos", maritalStatus: "Casada", children: "1 filho" },
+  { id: 'a23', name: "Rebecca Yarros", bio: "Autora premiada que explodiu no gênero Romantasia com seu épico de dragões 'Quarta Asa'.", imageUrl: "https://i.imgur.com/j5DvwoV.jpg", category: "Fantasia", topBooks: ["quarta asa"], hobby: "Harpa", country: "Estados Unidos", maritalStatus: "Casada", children: "6 filhos" },
+  { id: 'a24', name: "Ransom Riggs", bio: "Conhecido por suas histórias fantásticas ilustradas por fotos vintage autênticas.", imageUrl: "https://i.imgur.com/Wa6rKNd.jpg", category: "Fantasia", topBooks: ["biblioteca de almas"], hobby: "Fotografia", country: "Estados Unidos", maritalStatus: "Casado", children: "1 filha" },
+  { id: 'a25', name: "Matt Haig", bio: "Escritor britânico cujas obras exploram a saúde mental e as infinitas possibilidades da vida.", imageUrl: "https://i.imgur.com/BTmFOnM.jpg", category: "Ficção", topBooks: ["A Biblioteca da Meia-Noite"], hobby: "Corrida", country: "Reino Unido", maritalStatus: "Casado", children: "2 filhos" },
 ];
 
 export const MOCK_SEBOS: Sebo[] = [
