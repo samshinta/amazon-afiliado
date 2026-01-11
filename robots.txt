@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Allow: /livros
+Allow: /ofertas
 Allow: /blog
 Allow: /autores
 Allow: /frases

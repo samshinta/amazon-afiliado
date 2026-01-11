@@ -1,0 +1,54 @@
+==================================================
+   MELHORES PREÇOS - ESTRUTURA E TECNOLOGIAS
+==================================================
+
+1. TECNOLOGIAS UTILIZADAS
+-------------------------
+* React (v18.2): Biblioteca principal para a interface do usuário.
+* TypeScript: Adiciona tipagem ao JavaScript, evitando erros e facilitando a manutenção.
+* Tailwind CSS: Framework de estilização via classes utilitárias (design responsivo e rápido).
+* React Router Dom (v6): Gerencia a navegação entre as páginas sem recarregar o navegador.
+* Google Gemini API: Inteligência Artificial para gerar recomendações e conteúdo literário.
+* Netlify: Hospedagem do site, processamento de formulários e funções serverless (backend).
+* Google Sheets (CSV): Utilizado como banco de dados dinâmico para os livros.
+
+2. ESTRUTURA DE PASTAS E ARQUIVOS
+---------------------------------
+/ (Raiz)
+├── index.html          -> Onde o site começa. Contém links de fontes e scripts globais.
+├── index.tsx           -> Arquivo de entrada do React que "monta" o app no HTML.
+├── App.tsx             -> O "coração" do app. Define as rotas (URLs) e o layout fixo (Topo/Rodapé).
+├── types.ts            -> Define o formato dos dados (como deve ser um "Livro", "Autor" ou "Sebo").
+├── constants.tsx       -> Armazena dados fixos/mockados (frases, autores e sebos iniciais).
+├── package.json        -> Lista as bibliotecas instaladas e versões.
+
+/pages (Páginas principais)
+├── Home.tsx            -> Página inicial com destaques e banners.
+├── Books.tsx           -> Galeria de livros com filtros de busca e categoria.
+├── Blog.tsx            -> Lista de artigos e notícias literárias.
+├── BlogPostPage.tsx    -> Visualização detalhada de um artigo específico.
+├── Authors.tsx         -> Biografias e curiosidades sobre os escritores.
+├── Quotes.tsx          -> Mural de frases inspiradoras com design de papel.
+├── Sebos.tsx           -> Guia de livrarias físicas por estado.
+└── Contact.tsx         -> Página de atendimento com formulário integrado.
+
+/components (Peças reutilizáveis)
+├── Navbar.tsx          -> Menu de navegação superior (responsivo).
+├── BookCard.tsx        -> O "cartão" individual de cada livro.
+├── ContactForm.tsx     -> Formulário inteligente de envio de e-mail (usado em várias páginas).
+└── AIAssistant.tsx     -> Componente para interação com a IA Gemini.
+
+/services (Lógica e Integrações)
+├── geminiService.ts    -> Faz a ponte entre o site e a Inteligência Artificial.
+└── sheetService.ts     -> Lê a planilha do Google para atualizar os livros automaticamente.
+
+/netlify/functions (Backend / Lógica Oculta)
+└── gemini.ts           -> Função que protege sua Chave de API e conversa com o Google Gemini.
+
+3. FUNCIONAMENTO DO FLUXO
+-------------------------
+1. O site carrega os livros de uma Planilha Google via 'sheetService'.
+2. O N8N pode atualizar essa planilha, e o site reflete as mudanças automaticamente.
+3. O usuário preenche formulários que são processados pelo Netlify e enviados para seu e-mail.
+4. A IA (Gemini) processa solicitações complexas através das 'Netlify Functions'.
+==================================================

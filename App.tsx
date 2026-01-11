@@ -9,6 +9,7 @@ import Authors from './pages/Authors';
 import Blog from './pages/Blog';
 import BlogPostPage from './pages/BlogPostPage';
 import Contact from './pages/Contact';
+import Offers from './pages/Offers';
 
 const App: React.FC = () => {
   return (
@@ -20,6 +21,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/livros" element={<Books />} />
+            <Route path="/ofertas" element={<Offers />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPostPage />} />
             <Route path="/autores" element={<Authors />} />

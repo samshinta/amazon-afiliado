@@ -16,6 +16,15 @@
     <priority>0.9</priority>
   </url>
 
+  <!-- Ofertas do Dia (Nova) -->
+  <url>
+    <loc>https://melhoresprecos.shop/#/ofertas</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+
   <!-- Blog Principal -->
   <url>
     <loc>https://melhoresprecos.shop/#/blog</loc>
