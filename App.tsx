@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Sebos from './pages/Sebos';
@@ -23,7 +23,7 @@ const App: React.FC = () => {
             <Route path="/livros" element={<Books />} />
             <Route path="/ofertas" element={<Offers />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:id" element={<BlogPostPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/autores" element={<Authors />} />
             <Route path="/frases" element={<Quotes />} />
             <Route path="/sebos" element={<Sebos />} />

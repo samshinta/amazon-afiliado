@@ -1,11 +1,15 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MOCK_BLOG } from '../constants';
+import SEO from '../components/SEO';
 
 const Blog: React.FC = () => {
   return (
     <div className="min-h-screen py-12 bg-stone-50">
+      <SEO 
+        title="Blog Literário" 
+        description="Artigos, análises e curiosidades sobre o universo dos livros. Descubra novas perspectivas literárias conosco." 
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Blog MelhoresPreços</h1>
@@ -17,7 +21,7 @@ const Blog: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {MOCK_BLOG.map((post) => (
             <Link 
-              to={`/blog/${post.id}`} 
+              to={`/blog/${post.slug}`} 
               key={post.id} 
               className="group bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition-all"
             >

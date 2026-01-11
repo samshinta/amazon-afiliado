@@ -1,11 +1,11 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { MOCK_BLOG } from '../constants';
+import SEO from '../components/SEO';
 
 const BlogPostPage: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const post = MOCK_BLOG.find(p => p.id === id);
+  const { slug } = useParams<{ slug: string }>();
+  const post = MOCK_BLOG.find(p => p.slug === slug);
 
   if (!post) {
     return (
@@ -16,7 +16,6 @@ const BlogPostPage: React.FC = () => {
     );
   }
 
-  // Helper to render markdown-like content simply
   const renderContent = (content: string) => {
     return content.split('\n').map((line, i) => {
       const trimmed = line.trim();
@@ -32,7 +31,6 @@ const BlogPostPage: React.FC = () => {
       }
       if (trimmed === '') return <br key={i} />;
       
-      // Basic bolding
       const parts = line.split('**');
       return (
         <p key={i} className="text-slate-700 leading-relaxed mb-4 text-lg">
@@ -44,6 +42,21 @@ const BlogPostPage: React.FC = () => {
 
   return (
     <article className="min-h-screen bg-white">
+      <SEO 
+        title={post.title} 
+        description={post.excerpt} 
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "headline": post.title,
+          "image": post.imageUrl,
+          "author": {
+            "@type": "Person",
+            "name": post.author
+          },
+          "datePublished": post.date
+        }}
+      />
       {/* Cover */}
       <div className="w-full h-[40vh] md:h-[60vh] relative overflow-hidden">
         <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover" />
@@ -62,7 +75,6 @@ const BlogPostPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Content */}
       <div className="max-w-4xl mx-auto px-6 py-16">
         <div className="flex items-center gap-4 mb-12 border-b border-stone-100 pb-8 text-slate-500">
           <div className="w-12 h-12 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 font-bold">
@@ -80,22 +92,6 @@ const BlogPostPage: React.FC = () => {
 
         <div className="prose prose-lg max-w-none">
           {renderContent(post.content)}
-        </div>
-
-        {/* Footer CTA */}
-        <div className="mt-20 p-10 bg-stone-50 rounded-[2.5rem] border border-stone-200 text-center">
-          <h4 className="text-2xl font-bold text-slate-900 mb-4">Gostou deste tema?</h4>
-          <p className="text-slate-600 mb-8 max-w-lg mx-auto">
-            Explore nossa seleção curada de livros de ficção científica e outros gêneros que desafiam a mente.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/livros" className="bg-indigo-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-700 transition-all">
-              Ver Mais Vendidos
-            </Link>
-            <Link to="/blog" className="bg-white border border-stone-200 text-slate-700 px-8 py-4 rounded-xl font-bold hover:bg-stone-100 transition-all">
-              Outros Artigos
-            </Link>
-          </div>
         </div>
       </div>
     </article>

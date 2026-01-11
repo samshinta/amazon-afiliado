@@ -3,23 +3,23 @@
   <!-- Página Inicial -->
   <url>
     <loc>https://melhoresprecos.shop/</loc>
-    <lastmod>2024-05-22</lastmod>
+    <lastmod>2024-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Mais Vendidos -->
   <url>
-    <loc>https://melhoresprecos.shop/#/livros</loc>
-    <lastmod>2024-05-22</lastmod>
+    <loc>https://melhoresprecos.shop/livros</loc>
+    <lastmod>2024-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Ofertas do Dia (Nova) -->
+  <!-- Ofertas do Dia -->
   <url>
-    <loc>https://melhoresprecos.shop/#/ofertas</loc>
-    <lastmod>2024-05-22</lastmod>
+    <loc>https://melhoresprecos.shop/ofertas</loc>
+    <lastmod>2024-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -27,15 +27,15 @@
 
   <!-- Blog Principal -->
   <url>
-    <loc>https://melhoresprecos.shop/#/blog</loc>
-    <lastmod>2024-05-22</lastmod>
+    <loc>https://melhoresprecos.shop/blog</loc>
+    <lastmod>2024-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Posts do Blog (ID 1) -->
+  <!-- Posts do Blog (URL Amigável) -->
   <url>
-    <loc>https://melhoresprecos.shop/#/blog/1</loc>
+    <loc>https://melhoresprecos.shop/blog/por-que-ler-ficcao-cientifica-aumenta-a-criatividade</loc>
     <lastmod>2024-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -43,32 +43,16 @@
 
   <!-- Autores -->
   <url>
-    <loc>https://melhoresprecos.shop/#/autores</loc>
-    <lastmod>2024-05-22</lastmod>
+    <loc>https://melhoresprecos.shop/autores</loc>
+    <lastmod>2024-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Frases & Inspirações -->
-  <url>
-    <loc>https://melhoresprecos.shop/#/frases</loc>
-    <lastmod>2024-05-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Garimpo de Sebos -->
-  <url>
-    <loc>https://melhoresprecos.shop/#/sebos</loc>
-    <lastmod>2024-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
   <!-- Contato -->
   <url>
-    <loc>https://melhoresprecos.shop/#/contato</loc>
-    <lastmod>2024-05-22</lastmod>
+    <loc>https://melhoresprecos.shop/contato</loc>
+    <lastmod>2024-05-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>

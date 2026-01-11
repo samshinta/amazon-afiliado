@@ -1,4 +1,4 @@
-import { Book, BlogPost, Quote, Author, Sebo } from './types';
+import { Book, BlogPost, Quote, Author, Sebo, OfferProduct } from './types';
 
 const generateMockBooks = (): Book[] => {
   const titles = [
@@ -123,6 +123,7 @@ export const MOCK_OFFERS: OfferProduct[] = [
 export const MOCK_BLOG: BlogPost[] = [
   {
     id: '1',
+    slug: 'por-que-ler-ficcao-cientifica-aumenta-a-criatividade',
     title: 'Por que ler ficção científica aumenta a criatividade?',
     excerpt: 'Descubra como mundos imaginários podem expandir seus horizontes cognitivos.',
     content: `
@@ -136,8 +137,6 @@ export const MOCK_BLOG: BlogPost[] = [
 
       > "A função da ficção é a abstração e simulação da experiência social." 
       > — **Raymond Mar & Keith Oatley (2008)**, York University.
-
-      O estudo de Mar e Oatley sugere que a leitura de ficção treina a **Teoria da Mente**, permitindo-nos compreender melhor as intenções e emoções alheias ao simular interações sociais complexas.
 
       ### O Poder do "E se?"
       O núcleo da ficção científica é o questionamento hipotético. Ao confrontar essas perguntas, o leitor desenvolve um pensamento crítico mais aguçado e uma visão menos rígida da realidade.

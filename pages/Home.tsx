@@ -2,12 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MOCK_BOOKS, MOCK_BLOG, MOCK_QUOTES } from '../constants';
 import BookCard from '../components/BookCard';
+import SEO from '../components/SEO';
 
 const Home: React.FC = () => {
   const featuredBooks = MOCK_BOOKS.slice(0, 4);
 
   return (
     <div className="space-y-16 py-8">
+      <SEO 
+        title="Início" 
+        description="MelhoresPreços.shop - Sua curadoria inteligente para livros e ofertas exclusivas na Amazon Brasil." 
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "MelhoresPreços.shop",
+          "url": "https://melhoresprecos.shop/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://melhoresprecos.shop/livros?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }}
+      />
       {/* Hero Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-br from-indigo-900 to-slate-900 rounded-[2.5rem] p-8 md:p-16 text-white relative overflow-hidden shadow-2xl">
@@ -29,13 +45,6 @@ const Home: React.FC = () => {
           </div>
           
           <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full -mr-24 -mt-24 blur-3xl"></div>
-          <div className="absolute bottom-0 right-12 hidden lg:block">
-            <div className="flex gap-4 items-end opacity-20 transform rotate-12 translate-y-20">
-               {[...Array(5)].map((_, i) => (
-                 <div key={i} className="w-16 bg-white rounded-t-lg" style={{ height: `${100 + i * 30}px` }}></div>
-               ))}
-            </div>
-          </div>
         </div>
       </section>
 
@@ -77,7 +86,7 @@ const Home: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {MOCK_BLOG.map(post => (
-            <Link to={`/blog/${post.id}`} key={post.id} className="group cursor-pointer block">
+            <Link to={`/blog/${post.slug}`} key={post.id} className="group cursor-pointer block">
               <div className="aspect-video rounded-2xl overflow-hidden mb-4 shadow-sm border border-stone-200">
                 <img src={post.imageUrl} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               </div>
