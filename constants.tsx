@@ -64,7 +64,7 @@ export const MOCK_OFFERS: OfferProduct[] = [
     amazonLink: 'https://amzn.to/49CuC3g'
   },
   {
-    id: 'off-1',
+    id: 'off-2',
     title: 'Kindle Paperwhite Signature Edition 32 GB',
     category: 'Tecnologia',
     description: 'Leitor de livros digitais com tela de 6,8” e iluminação ajustável.',
@@ -75,7 +75,7 @@ export const MOCK_OFFERS: OfferProduct[] = [
     amazonLink: 'https://amzn.to/4qeMTe6'
   },
   {
-    id: 'off-2',
+    id: 'off-3',
     title: 'Huggies Supreme Care Fralda G 140 Unidades',
     category: 'Bebê',
     description: 'Máxima proteção e conforto para o seu bebê com tecnologia Huggies.',
@@ -86,7 +86,7 @@ export const MOCK_OFFERS: OfferProduct[] = [
     amazonLink: 'https://amzn.to/4puRaJv'
   },
   {
-    id: 'off-3',
+    id: 'off-4',
     title: 'Impressora Multifuncional HP Smart Tank 581',
     category: 'Informática',
     description: 'Tanque de tinta de alta capacidade para impressões coloridas de baixo custo.',
@@ -97,7 +97,7 @@ export const MOCK_OFFERS: OfferProduct[] = [
     amazonLink: 'https://amzn.to/4bpvFpR'
   },
   {
-    id: 'off-4',
+    id: 'off-5',
     title: 'Personal Papel Higiênico Vip Folha Tripla 32 Rolos',
     category: 'Casa',
     description: 'Maciez e resistência superior com folha tripla de alta qualidade.',
@@ -108,7 +108,7 @@ export const MOCK_OFFERS: OfferProduct[] = [
     amazonLink: 'https://amzn.to/450w5ze'
   },
   {
-    id: 'off-5',
+    id: 'off-6',
     title: 'Lápis De Cor Faber-Castell Ecolápis 24 Cores',
     category: 'Papelaria',
     description: 'Cores vibrantes e mina macia para desenhos incríveis.',
@@ -119,7 +119,7 @@ export const MOCK_OFFERS: OfferProduct[] = [
     amazonLink: 'https://amzn.to/3LGJWnE'
   },
   {
-    id: 'off-6',
+    id: 'off-7',
     title: 'NIVEA Sérum Facial Cellular Luminous 630 30ml',
     category: 'Beleza',
     description: 'Deixa a pele uniforme, Reduz marcas escurecidas',
