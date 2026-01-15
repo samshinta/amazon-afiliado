@@ -54,6 +54,17 @@ export const MOCK_BOOKS: Book[] = generateMockBooks();
 export const MOCK_OFFERS: OfferProduct[] = [
   {
     id: 'off-1',
+    title: 'Pilha recarregável AA 2700Mah Elgin Com 4 unidades Comum',
+    category: 'Eletronico',
+    description: 'Pilha recarregável AA 2700Mah Elgin Com 4 unidades Comum.',
+    price: 38.22,
+    oldPrice: 55.11,
+    discount: -29,
+    imageUrl: 'https://i.imgur.com/sgsN1N1.jpg',
+    amazonLink: 'https://amzn.to/49CuC3g'
+  },
+  {
+    id: 'off-1',
     title: 'Kindle Paperwhite Signature Edition 32 GB',
     category: 'Tecnologia',
     description: 'Leitor de livros digitais com tela de 6,8” e iluminação ajustável.',

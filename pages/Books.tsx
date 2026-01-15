@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MOCK_BOOKS } from '../constants';
 import BookCard from '../components/BookCard';
+import SEO from '../components/SEO';
 
 const Books: React.FC = () => {
   const location = useLocation();
@@ -34,6 +35,10 @@ const Books: React.FC = () => {
 
   return (
     <div className="min-h-screen py-12 bg-stone-50">
+      <SEO 
+        title="Livros Mais Vendidos" 
+        description="Explore nossa lista atualizada dos livros mais vendidos na Amazon Brasil. Curadoria por categoria, autores e tendências literárias."
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-slate-900 mb-4">Os Mais Vendidos</h1>
