@@ -68,9 +68,9 @@ export const MOCK_OFFERS: OfferProduct[] = [
     title: 'Kindle Paperwhite Signature Edition 32 GB',
     category: 'Tecnologia',
     description: 'Leitor de livros digitais com tela de 6,8” e iluminação ajustável.',
-    price: 949.00,
-    oldPrice: 1199.00,
-    discount: 20,
+    price:  , 
+    oldPrice: ,
+    discount: ,
     imageUrl: 'https://i.imgur.com/YgU1AA3.jpg',
     amazonLink: 'https://amzn.to/4qeMTe6'
   },
