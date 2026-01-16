@@ -128,7 +128,7 @@ export const MOCK_OFFERS: OfferProduct[] = [
     discount: 0,
     imageUrl: 'https://i.imgur.com/6NOZVsM.jpg',
     amazonLink: 'https://amzn.to/3YzyBIY'
-  }
+  },
   {
     id: 'off-8',
     title: 'Pilha recarregável AA 2700mAh Elgin com 2 unidades Comum',
