@@ -129,6 +129,17 @@ export const MOCK_OFFERS: OfferProduct[] = [
     imageUrl: 'https://i.imgur.com/6NOZVsM.jpg',
     amazonLink: 'https://amzn.to/3YzyBIY'
   }
+  {
+    id: 'off-8',
+    title: 'Pilha recarregável AA 2700mAh Elgin com 2 unidades Comum',
+    category: 'Eletronico',
+    description: 'Energia renovável de alta qualidade, as pilhas recarregáveis da Elgin suportam até 1000 recargas.',
+    price: 0,
+    oldPrice: 0,
+    discount: 0,
+    imageUrl: 'https://i.imgur.com/fJVGO5u.jpg',
+    amazonLink: 'https://amzn.to/49NsAxI'
+  }
 ];
 
 export const MOCK_BLOG: BlogPost[] = [
