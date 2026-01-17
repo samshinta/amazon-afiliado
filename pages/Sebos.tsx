@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { MOCK_SEBOS } from '../constants';
 import { Sebo } from '../types';
-import ContactForm from '../components/ContactForm';
 
 const Sebos: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'SP' | 'RJ' | 'MG'>('SP');
@@ -16,7 +15,7 @@ const Sebos: React.FC = () => {
 
   return (
     <div className="min-h-screen py-12 bg-[#f4f1ea] relative overflow-hidden">
-      {/* Textura sutil de papel físico (Consistência com Frases) */}
+      {/* Textura sutil de papel físico */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/paper-fibers.png')]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -112,30 +111,6 @@ const Sebos: React.FC = () => {
             <p className="text-stone-500">Nenhum sebo encontrado para esta região no momento.</p>
           </div>
         )}
-
-        {/* Formulário de Indicação de Sebo */}
-        <section className="bg-slate-900 rounded-[3rem] p-8 md:p-16 relative overflow-hidden shadow-2xl">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-indigo-500/10 rounded-full -ml-48 -mt-48 blur-3xl"></div>
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 serif">Conhece um sebo incrível?</h2>
-              <p className="text-indigo-100/70 text-lg mb-8 leading-relaxed italic">
-                A nossa base de dados é mantida pela comunidade. Se você frequenta uma livraria de usados que merece ser descoberta por mais pessoas, envie-nos os detalhes!
-              </p>
-              <ul className="space-y-4 text-white/80">
-                <li className="flex items-center gap-3"><i className="fa-solid fa-check text-indigo-400"></i> Localização precisa</li>
-                <li className="flex items-center gap-3"><i className="fa-solid fa-check text-indigo-400"></i> Contato atualizado</li>
-                <li className="flex items-center gap-3"><i className="fa-solid fa-check text-indigo-400"></i> Especialidade do acervo</li>
-              </ul>
-            </div>
-            
-            <ContactForm 
-              theme="dark"
-              title="Indicar novo Sebo"
-              description="Sua sugestão será analisada por nossa equipe e incluída na próxima atualização da lista."
-            />
-          </div>
-        </section>
       </div>
     </div>
   );

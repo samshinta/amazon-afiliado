@@ -8,7 +8,6 @@ import Quotes from './pages/Quotes';
 import Authors from './pages/Authors';
 import Blog from './pages/Blog';
 import BlogPostPage from './pages/BlogPostPage';
-import Contact from './pages/Contact';
 import Offers from './pages/Offers';
 
 const App: React.FC = () => {
@@ -27,7 +26,6 @@ const App: React.FC = () => {
             <Route path="/autores" element={<Authors />} />
             <Route path="/frases" element={<Quotes />} />
             <Route path="/sebos" element={<Sebos />} />
-            <Route path="/contato" element={<Contact />} />
           </Routes>
         </main>
 
@@ -67,7 +65,6 @@ const App: React.FC = () => {
                 <ul className="space-y-4 text-sm">
                   <li><a href="#" className="hover:text-indigo-400">Privacidade</a></li>
                   <li><a href="#" className="hover:text-indigo-400">Termos de Uso</a></li>
-                  <li><Link to="/contato" className="hover:text-indigo-400">Email</Link></li>
                 </ul>
               </div>
             </div>
