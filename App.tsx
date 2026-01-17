@@ -53,18 +53,22 @@ const App: React.FC = () => {
               <div>
                 <h4 className="text-white font-bold mb-6">Navegação</h4>
                 <ul className="space-y-4 text-sm">
-                  <li><Link to="/livros" className="hover:text-indigo-400">Mais Vendidos</Link></li>
-                  <li><Link to="/blog" className="hover:text-indigo-400">Blog</Link></li>
-                  <li><Link to="/autores" className="hover:text-indigo-400">Autores</Link></li>
-                  <li><Link to="/frases" className="hover:text-indigo-400">Frases</Link></li>
-                  <li><Link to="/sebos" className="hover:text-indigo-400">Sebos</Link></li>
+                  <li><Link to="/livros" className="hover:text-indigo-400 transition-colors">Mais Vendidos</Link></li>
+                  <li><Link to="/blog" className="hover:text-indigo-400 transition-colors">Blog</Link></li>
+                  <li><Link to="/autores" className="hover:text-indigo-400 transition-colors">Autores</Link></li>
+                  <li><Link to="/frases" className="hover:text-indigo-400 transition-colors">Frases</Link></li>
+                  <li><Link to="/sebos" className="hover:text-indigo-400 transition-colors">Sebos</Link></li>
                 </ul>
               </div>
               <div>
-                <h4 className="text-white font-bold mb-6">Informações</h4>
+                <h4 className="text-white font-bold mb-6">Contato & Info</h4>
                 <ul className="space-y-4 text-sm">
-                  <li><a href="#" className="hover:text-indigo-400">Privacidade</a></li>
-                  <li><a href="#" className="hover:text-indigo-400">Termos de Uso</a></li>
+                  <li className="flex items-center gap-2">
+                    <i className="fa-solid fa-envelope text-indigo-400"></i>
+                    <span>contato@melhoresprecos.shop</span>
+                  </li>
+                  <li><a href="#" className="hover:text-indigo-400 transition-colors">Privacidade</a></li>
+                  <li><a href="#" className="hover:text-indigo-400 transition-colors">Termos de Uso</a></li>
                 </ul>
               </div>
             </div>
