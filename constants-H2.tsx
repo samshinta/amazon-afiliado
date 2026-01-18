@@ -1,4 +1,3 @@
-
 import { Book, BlogPost, Quote, Author, Sebo } from './types';
 
 const generateMockBooks = (): Book[] => {
@@ -28,37 +27,26 @@ const generateMockBooks = (): Book[] => {
     { t: 'daisy jones and the six', a: 'Taylor Jenkins Reid', c: 'Ficção', p: 34.90, link: 'https://amzn.to/3Ngw6J5', img: 'https://i.imgur.com/Y1M8Lsr.jpg' },
     { t: 'os sete maridos de evelyn hugo', a: 'Taylor Jenkins Reid', c: 'Ficção', p: 39.00, link: 'https://amzn.to/4pxERfr', img: 'https://i.imgur.com/DotPTey.jpg' },
     { t: 'heartstopper', a: 'Alice Oseman', c: 'HQ', p: 42.00, link: 'https://amzn.to/49PU8m7', img: 'https://i.imgur.com/aoiF2qX.jpg' },
-    { t: 'corte de espinhos e rosass', a: 'Sarah J. Maas', c: 'Fantasia', p: 48.00, link: 'https://amzn.to/4q6efDe', img: 'https://i.imgur.com/Il3M9Ag.jpg' },
+    { t: 'corte de espinhos e rosas', a: 'Sarah J. Maas', c: 'Fantasia', p: 48.00, link: 'https://amzn.to/4q6efDe', img: 'https://i.imgur.com/Il3M9Ag.jpg' },
     { t: 'o principe cruel', a: 'Holly Black', c: 'Fantasia', p: 35.90, link: 'https://amzn.to/3NmdvLL', img: 'https://i.imgur.com/7MNyQ5l.jpg' },
     { t: 'quarta asa', a: 'Rebecca Yarros', c: 'Fantasia', p: 59.90, link: 'https://amzn.to/4jzuJBs', img: 'https://i.imgur.com/j5DvwoV.jpg' },
     { t: 'biblioteca de almas', a: 'Ransom Riggs', c: 'Fantasia', p: 33.00, link: 'https://amzn.to/3LvK21g', img: 'https://i.imgur.com/Wa6rKNd.jpg' },
   ];
 
-  return titles.map((book, index) => {
-    // Generate slug from title
-    const slug = book.t.toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-');
-
-    return {
-      id: `book-${index}`,
-      slug: slug,
-      title: book.t,
-      author: book.a,
-      description: `Um dos livros mais vendidos e influentes da atualidade.`,
-      price: book.p,
-      oldPrice: book.p * 1.3,
-      imageUrl: book.img,
-      category: book.c,
-      rating: 4.8,
-      reviewsCount: 1000,
-      amazonLink: book.link,
-      updatedAt: new Date().toISOString()
-    };
-  });
+  return titles.map((book, index) => ({
+    id: `book-${index}`,
+    title: book.t,
+    author: book.a,
+    description: `Um dos livros mais vendidos e influentes da atualidade.`,
+    price: book.p,
+    oldPrice: book.p * 1.3,
+    imageUrl: book.img,
+    category: book.c,
+    rating: 4.8,
+    reviewsCount: 1000,
+    amazonLink: book.link,
+    updatedAt: new Date().toISOString()
+  }));
 };
 
 export const MOCK_BOOKS: Book[] = generateMockBooks();

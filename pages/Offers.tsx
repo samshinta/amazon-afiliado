@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { MOCK_OFFERS } from '../constants';
 import SEO from '../components/SEO';
@@ -50,7 +49,7 @@ const Offers: React.FC = () => {
                     rel="noopener noreferrer"
                     className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-lg"
                   >
-                    Ver Ofertas na Amazon <i className="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    Ver detalhes na Amazon <i className="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                   </a>
                 </div>
               </div>
@@ -62,7 +61,7 @@ const Offers: React.FC = () => {
           <i className="fa-brands fa-amazon text-4xl text-amber-500 mb-6"></i>
           <h2 className="text-2xl font-bold text-slate-900 mb-4 serif">Transparência e Confiança</h2>
           <p className="text-slate-600 text-sm leading-relaxed mb-6">
-            Não exibimos preços fixos para garantir que você sempre veja o valor mais atualizado e as melhores condições diretamente no site oficial da Amazon Brasil.
+            Não somos uma loja. Ao clicar nos links de "Ver na Amazon", você será redirecionado para o site oficial da Amazon Brasil para conferir o preço atual e concluir sua compra com total segurança.
           </p>
         </section>
       </div>

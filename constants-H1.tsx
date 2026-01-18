@@ -1,4 +1,3 @@
-
 import { Book, BlogPost, Quote, Author, Sebo } from './types';
 
 const generateMockBooks = (): Book[] => {
@@ -84,31 +83,20 @@ const generateMockBooks = (): Book[] => {
     { t: 'Dom Casmurro', a: 'Machado de Assis', c: 'Lit. Brasileira', p: 19.00 },
   ];
 
-  return titles.map((book, index) => {
-    // Generate slug from title
-    const slug = book.t.toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^\w\s-]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-');
-
-    return {
-      id: String(index + 1),
-      slug: slug,
-      title: book.t,
-      author: book.a,
-      description: `Um dos livros mais vendidos e influentes da atualidade na categoria ${book.c}.`,
-      price: book.p,
-      oldPrice: book.p * 1.3,
-      imageUrl: (book as any).img || `https://picsum.photos/seed/${index + 100}/400/600`,
-      category: book.c,
-      rating: 4.5 + Math.random() * 0.5,
-      reviewsCount: Math.floor(Math.random() * 20000) + 1000,
-      amazonLink: (book as any).link || 'https://www.amazon.com.br/gp/bestsellers/books/',
-      updatedAt: new Date().toISOString()
-    };
-  });
+  return titles.map((book, index) => ({
+    id: String(index + 1),
+    title: book.t,
+    author: book.a,
+    description: `Um dos livros mais vendidos e influentes da atualidade na categoria ${book.c}.`,
+    price: book.p,
+    oldPrice: book.p * 1.3,
+    imageUrl: (book as any).img || `https://picsum.photos/seed/${index + 100}/400/600`,
+    category: book.c,
+    rating: 4.5 + Math.random() * 0.5,
+    reviewsCount: Math.floor(Math.random() * 20000) + 1000,
+    amazonLink: (book as any).link || 'https://www.amazon.com.br/gp/bestsellers/books/',
+    updatedAt: new Date().toISOString()
+  }));
 };
 
 export const MOCK_BOOKS: Book[] = generateMockBooks();
