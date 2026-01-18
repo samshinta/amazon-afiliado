@@ -1,9 +1,13 @@
 
 export interface Book {
   id: string;
+  slug: string;
   title: string;
   author: string;
   description: string;
+  fullSummary?: string;
+  worthItReason?: string;
+  bestQuotes?: string[];
   price: number;
   oldPrice?: number;
   imageUrl: string;

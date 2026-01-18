@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Sebos from './pages/Sebos';
 import Books from './pages/Books';
+import BookDetail from './pages/BookDetail';
 import Quotes from './pages/Quotes';
 import Authors from './pages/Authors';
 import Blog from './pages/Blog';
@@ -20,6 +22,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/livros" element={<Books />} />
+            <Route path="/livro/:slug" element={<BookDetail />} />
             <Route path="/ofertas" element={<Offers />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
