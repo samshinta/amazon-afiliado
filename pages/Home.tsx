@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MOCK_BOOKS, MOCK_BLOG, MOCK_QUOTES } from '../constants';
+import { fetchBooksFromSheet } from '../services/sheetService';
+import { Book } from '../types';
 import BookCard from '../components/BookCard';
 import SEO from '../components/SEO';
 
 const Home: React.FC = () => {
-  const featuredBooks = MOCK_BOOKS.slice(0, 4);
+  const [featuredBooks, setFeaturedBooks] = useState<Book[]>(MOCK_BOOKS.slice(0, 4));
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadFeatured = async () => {
+      try {
+        const sheetBooks = await fetchBooksFromSheet();
+        if (sheetBooks.length > 0) {
+          // Exibe os 4 mais recentes da planilha ou do mix
+          setFeaturedBooks(sheetBooks.slice(0, 4));
+        }
+      } catch (err) {
+        console.error("Erro ao carregar destaques:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadFeatured();
+  }, []);
 
   return (
     <div className="space-y-16 py-8">
@@ -16,12 +36,7 @@ const Home: React.FC = () => {
           "@context": "https://schema.org",
           "@type": "WebSite",
           "name": "MelhoresPreços.shop",
-          "url": "https://melhoresprecos.shop/",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://melhoresprecos.shop/livros?search={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
+          "url": "https://melhoresprecos.shop/"
         }}
       />
       {/* Hero Section */}
@@ -29,16 +44,16 @@ const Home: React.FC = () => {
         <div className="bg-gradient-to-br from-indigo-900 to-slate-900 rounded-[2.5rem] p-8 md:p-16 text-white relative overflow-hidden shadow-2xl">
           <div className="relative z-10 max-w-2xl">
             <span className="inline-block px-3 py-1 bg-indigo-500/30 backdrop-blur-md rounded-full text-indigo-200 text-xs font-bold tracking-widest uppercase mb-6">
-              Curadoria Inteligente
+              Curadoria Inteligente & Automação n8n
             </span>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               A curadoria definitiva para sua <span className="text-indigo-400">próxima leitura.</span>
             </h1>
             <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-              Analisamos as tendências literárias para trazer as obras que realmente importam. Descubra livros que mudam perspectivas e expandem horizontes.
+              Livros unificados de diversas fontes e atualizados automaticamente para você nunca perder um best-seller.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/livros" className="bg-white text-indigo-900 px-8 py-4 rounded-xl font-bold hover:bg-indigo-50 transition-all flex items-center gap-2 shadow-lg shadow-white/10">
+              <Link to="/livros" className="bg-white text-indigo-900 px-8 py-4 rounded-xl font-bold hover:bg-indigo-50 transition-all flex items-center gap-2 shadow-lg">
                 Explorar Mais Vendidos <i className="fa-solid fa-arrow-right text-xs"></i>
               </Link>
             </div>
@@ -52,18 +67,24 @@ const Home: React.FC = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-2">Destaques da Semana</h2>
-            <p className="text-slate-500">Títulos que estão dando o que falar nas comunidades literárias.</p>
+            <h2 className="text-3xl font-bold text-slate-900 mb-2">Destaques Atualizados</h2>
+            <p className="text-slate-500">Títulos unificados que estão dominando as paradas literárias.</p>
           </div>
           <Link to="/livros" className="text-indigo-600 font-bold hover:underline flex items-center gap-2">
-            Ver todos
+            Ver catálogo completo
           </Link>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredBooks.map((book) => (
-            <BookCard key={book.id} book={book} />
-          ))}
+          {loading ? (
+             [...Array(4)].map((_, i) => (
+               <div key={i} className="h-80 bg-stone-100 rounded-xl skeleton"></div>
+             ))
+          ) : (
+            featuredBooks.map((book) => (
+              <BookCard key={book.id} book={book} />
+            ))
+          )}
         </div>
       </section>
 
