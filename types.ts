@@ -8,7 +8,7 @@ export interface Book {
   fullSummary?: string;
   worthItReason?: string;
   bestQuotes?: string[];
-  price: number;
+  price?: number;
   oldPrice?: number;
   imageUrl: string;
   category: string;
@@ -23,9 +23,9 @@ export interface OfferProduct {
   title: string;
   category: string;
   description: string;
-  price: number;
-  oldPrice: number;
-  discount: number;
+  price?: number;
+  oldPrice?: number;
+  discount?: number;
   imageUrl: string;
   amazonLink: string;
 }

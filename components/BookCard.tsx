@@ -36,12 +36,12 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
         
         <div className="mt-auto pt-3 border-t border-stone-50">
           <div className="flex items-center justify-between mb-3">
-             <span className="text-lg font-bold text-slate-900">R$ {book.price.toFixed(2)}</span>
              <div className="flex text-amber-400 text-[10px]">
                {[...Array(5)].map((_, i) => (
                  <i key={i} className={`fa-solid fa-star ${i >= Math.floor(book.rating) ? 'text-slate-200' : ''}`}></i>
                ))}
              </div>
+             <span className="text-[10px] text-slate-400 font-bold uppercase">Amazon</span>
           </div>
           <Link 
             to={`/livro/${book.slug}`}

@@ -31,23 +31,18 @@ export const fetchBooksFromSheet = async (): Promise<Book[]> => {
     const dataRows = rows.slice(1);
 
     return dataRows.map((row, index): Book | null => {
-      // RegEx aprimorada para lidar com campos longos e aspas
       const cols = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || [];
       const cleanCols = cols.map(c => c.replace(/^"|"$/g, '').trim());
 
       if (cleanCols.length < 2) return null;
 
       // MAPEAMENTO COLUNAS N8N:
-      // 0: Título | 1: Autor | 2: Preço | 3: Link Amazon | 4: URL Imagem | 5: Categoria 
+      // 0: Título | 1: Autor | 2: Preço (IGNORADO) | 3: Link Amazon | 4: URL Imagem | 5: Categoria 
       // 6: Resumo Detalhado | 7: Por que vale a pena | 8: Melhores Frases (Separadas por ;)
       
       const title = cleanCols[0]?.replace(/,/g, '') || 'Livro sem título';
       const author = cleanCols[1] || 'Autor desconhecido';
       
-      let priceStr = cleanCols[2] || '0';
-      priceStr = priceStr.replace('R$', '').replace(',', '.').trim();
-      const price = parseFloat(priceStr);
-
       const amazonLink = cleanCols[3] || '#';
       const imageUrl = cleanCols[4] || `https://picsum.photos/seed/${index}/400/600`;
       const category = cleanCols[5] || 'Geral';
@@ -72,8 +67,6 @@ export const fetchBooksFromSheet = async (): Promise<Book[]> => {
         fullSummary: fullSummary,
         worthItReason: worthItReason,
         bestQuotes: bestQuotes,
-        price: !isNaN(price) && price > 0 ? price : 39.90,
-        oldPrice: !isNaN(price) && price > 0 ? price * 1.2 : 49.90,
         imageUrl: imageUrl,
         category: category,
         rating: 4.8,

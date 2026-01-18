@@ -27,7 +27,7 @@ const BookDetail: React.FC = () => {
   return (
     <div className="min-h-screen bg-stone-50 pb-20">
       <SEO 
-        title={`${book.title} vale a pena? Resumo, Preço e Frases`} 
+        title={`${book.title} vale a pena? Resumo e Frases`} 
         description={`Leia o resumo completo de ${book.title}, descubra se vale a pena comprar e veja as melhores frases do livro de ${book.author}.`}
       />
 
@@ -58,10 +58,9 @@ const BookDetail: React.FC = () => {
 
               <div className="bg-indigo-900 p-8 rounded-3xl text-white shadow-lg space-y-6">
                 <div>
-                  <p className="text-indigo-300 text-sm font-bold uppercase tracking-widest mb-1">Preço Atualizado</p>
+                  <p className="text-indigo-300 text-sm font-bold uppercase tracking-widest mb-1">Disponibilidade</p>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-bold">R$ {book.price.toFixed(2)}</span>
-                    {book.oldPrice && <span className="text-indigo-400 line-through text-sm">R$ {book.oldPrice.toFixed(2)}</span>}
+                    <span className="text-2xl font-bold">Confira as Ofertas</span>
                   </div>
                 </div>
 
@@ -71,10 +70,10 @@ const BookDetail: React.FC = () => {
                   rel="noopener noreferrer"
                   className="block w-full py-4 bg-amber-500 hover:bg-amber-600 text-slate-900 text-center rounded-xl font-black transition-all shadow-lg hover:scale-[1.02] flex items-center justify-center gap-2"
                 >
-                  <i className="fa-brands fa-amazon text-xl"></i> COMPRAR NA AMAZON
+                  <i className="fa-brands fa-amazon text-xl"></i> VER PREÇO NA AMAZON
                 </a>
                 <p className="text-[10px] text-center text-indigo-300 italic">
-                  * Verifique a disponibilidade e frete grátis no site.
+                  * Os preços e disponibilidade são definidos pela Amazon.
                 </p>
               </div>
             </div>
@@ -144,7 +143,7 @@ const BookDetail: React.FC = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-4 px-10 py-5 bg-indigo-600 text-white rounded-2xl font-black text-xl hover:bg-indigo-700 transition-all shadow-2xl hover:-translate-y-1"
               >
-                GARANTIR MEU EXEMPLAR <i className="fa-solid fa-arrow-right"></i>
+                VER OFERTAS NA AMAZON <i className="fa-solid fa-arrow-right"></i>
               </a>
               <p className="mt-4 text-sm text-slate-400 flex items-center justify-center gap-2">
                 <i className="fa-solid fa-shield-halved"></i> Compra segura via Amazon Brasil
